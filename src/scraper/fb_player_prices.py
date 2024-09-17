@@ -2,8 +2,7 @@ import asyncio
 from pyppeteer import launch
 import re
 import pandas as pd
-import warnings
-warnings.filterwarnings("ignore")
+from datetime import datetime
 
 # Function to load webpage content
 async def load_webpage(url):
@@ -31,32 +30,18 @@ def find_player_names(html_content):
     return matches
 
 
-# Function to extract strong foot
-def find_strong_foot(html_content):
-    foot_pattern = r'<td class="table-foot"><img alt="Strong Foot" src="/design2/img/static/filters/foot-(left|right).svg"'
-    strong_foot = re.findall(foot_pattern, html_content)
-    return strong_foot
+# Function to extract player price
+def find_player_price(html_content):
+    price_pattern = r'<td class="table-price no-wrap platform-ps-only">\s*<div class="price bold  centered small-row align-center">(\d+)<img alt="Coin"'
+    prices = re.findall(price_pattern, html_content)
+    return prices
 
 
-# Function to extract weak foot
-def find_weak_foot(html_content):
-    weak_foot_pattern = r'<td class="table-weak-foot">(\d+)<i'
-    weak_foot_stats = re.findall(weak_foot_pattern, html_content)
-    return weak_foot_stats
-
-
-# Function to extract skill stars
-def find_skill_stars(html_content):
-    skill_stars_pattern = r'<td class="table-skills">(\d+)<i'
-    skill_stars = re.findall(skill_stars_pattern, html_content)
-    return skill_stars
-
-
-# Function to extract player position
-def find_player_position(html_content):
-    position_pattern = r'<td class="table-pos">\s*<div class="bold">([^<]+)</div>'
-    positions = re.findall(position_pattern, html_content)
-    return positions
+# Function to extract player rating
+def find_player_rating(html_content):
+    rating_pattern = r'<div class="player-rating-card-text font-standard bold">(\d+)</div>'
+    ratings = re.findall(rating_pattern, html_content)
+    return ratings
 
 
 # Function to extract pace
@@ -100,11 +85,6 @@ def find_player_physicality(html_content):
     physicality_stats = re.findall(physicality_pattern, html_content, re.DOTALL)
     return physicality_stats
 
-# Function to extract player rating
-def find_player_rating(html_content):
-    rating_pattern = r'<div class="player-rating-card-text font-standard bold">(\d+)</div>'
-    ratings = re.findall(rating_pattern, html_content)
-    return ratings
 
 # Validation function to ensure all lists have the same length
 def validate_data_lengths(*data_lists):
@@ -120,39 +100,34 @@ async def scrape_page(url):
 
     if html_content:
         player_names = find_player_names(html_content)
-        player_strong_foot = find_strong_foot(html_content)
-        player_weak_foot = find_weak_foot(html_content)
-        player_skills = find_skill_stars(html_content)
-        player_position = find_player_position(html_content)
+        player_ratings = find_player_rating(html_content)
+        player_prices = find_player_price(html_content)
         player_pace = find_player_pace(html_content)
         player_shooting = find_player_shooting(html_content)
         player_passing = find_player_passing(html_content)
         player_dribbling = find_player_dribbling(html_content)
         player_defending = find_player_defending(html_content)
         player_physicality = find_player_physicality(html_content)
-        player_ratings = find_player_rating(html_content)  # Added player rating extraction
+        current_timestamp = [datetime.now()] * len(player_names)  # Timestamp for price scraping
 
         # Validate that all lists are of equal length
-        if validate_data_lengths(player_names, player_strong_foot, player_weak_foot, player_skills, player_position,
-                                 player_pace, player_shooting, player_passing, player_dribbling, player_defending,
-                                 player_physicality, player_ratings):
+        if validate_data_lengths(player_names, player_ratings, player_prices, player_pace, player_shooting,
+                                 player_passing, player_dribbling, player_defending, player_physicality):
             player_data = []
-            for name, strong_foot, weak_foot, skills, position, pace, shooting, passing, dribbling, defending, physicality, rating in zip(
-                    player_names, player_strong_foot, player_weak_foot, player_skills, player_position, player_pace,
-                    player_shooting, player_passing, player_dribbling, player_defending, player_physicality, player_ratings):
+            for name, rating, price, pace, shooting, passing, dribbling, defending, physicality, dttm in zip(
+                    player_names, player_ratings, player_prices, player_pace, player_shooting, player_passing,
+                    player_dribbling, player_defending, player_physicality, current_timestamp):
                 player_data.append({
                     'name': name,
-                    'strong_foot': strong_foot,
-                    'weak_foot': weak_foot,
-                    'skills': skills,
-                    'position': position,
+                    'rating': rating,
+                    'price': price,
                     'pace': pace,
                     'shooting': shooting,
                     'passing': passing,
                     'dribbling': dribbling,
                     'defending': defending,
                     'physicality': physicality,
-                    'rating': rating  # Added rating to data
+                    'dttm_price': dttm  # Added timestamp column
                 })
 
             df = pd.DataFrame(player_data)
