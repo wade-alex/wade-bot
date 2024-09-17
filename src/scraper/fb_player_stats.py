@@ -3,7 +3,10 @@ from pyppeteer import launch
 import re
 import pandas as pd
 import warnings
+import nest_asyncio
+
 warnings.filterwarnings("ignore")
+nest_asyncio.apply()
 
 # Function to load webpage content
 async def load_webpage(url):
