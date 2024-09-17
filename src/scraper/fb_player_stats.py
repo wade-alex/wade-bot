@@ -1,7 +1,6 @@
-# futbin_players.py
+# fb_player_stats.py
 import asyncio
 from pyppeteer import launch
-import pyperclip
 import re
 import pandas as pd
 
@@ -17,7 +16,7 @@ async def load_webpage(url):
 
     # Navigate to the page and wait for the content to load
     try:
-        await page.goto(url, {'timeout': 60000, 'waitUntil': 'domcontentloaded'})  # Reduced to 'domcontentloaded'
+        await page.goto(url, {'timeout': 60000, 'waitUntil': 'domcontentloaded'})  # Wait until DOM is loaded
         await asyncio.sleep(3)  # Wait for 3 seconds to ensure content is loaded
 
         # Get the page content
@@ -53,11 +52,12 @@ def find_skill_stars(html_content):
     skill_stars = re.findall(skill_stars_pattern, html_content)
     return skill_stars
 
-# Function to extract card type
-def find_card_type(html_content):
-    card_type_pattern = r'<div class="table-player-revision">([^<]+)</div>'
-    card_types = re.findall(card_type_pattern, html_content)
-    return card_types
+# Commenting out the 'card type' function and related data extraction
+# # Function to extract card type
+# def find_card_type(html_content):
+#     card_type_pattern = r'<div class="table-player-revision">([^<]+)</div>'
+#     card_types = re.findall(card_type_pattern, html_content)
+#     return card_types
 
 # Function to extract player position
 def find_player_position(html_content):
@@ -110,63 +110,67 @@ def validate_data_lengths(*data_lists):
     return True
 
 async def main():
-    url = 'https://www.futbin.com/players'
-    html_content = await load_webpage(url)
+    base_url = 'https://www.futbin.com/players?page='
+    pages_to_scrape = 2  # Number of pages to scrape
+    all_player_data = []  # To hold player data from all pages
 
-    if html_content:
-        # Find player names
-        player_names = find_player_names(html_content)
+    # Iterate over multiple pages
+    for page_num in range(1, pages_to_scrape + 1):
+        url = base_url + str(page_num)
+        print(f"Scraping page: {url}")
+        html_content = await load_webpage(url)
 
-        # Find stats for strong foot, weak foot, skill stars, card type, position
-        strong_foot = find_strong_foot(html_content)
-        weak_foot = find_weak_foot(html_content)
-        skill_stars = find_skill_stars(html_content)
-        card_type = find_card_type(html_content)
-        position = find_player_position(html_content)
+        if html_content:
+            # Find player names
+            player_names = find_player_names(html_content)
 
-        # Find stats for pace, shooting, passing, dribbling, defending, physicality
-        player_pace = find_player_pace(html_content)
-        player_shooting = find_player_shooting(html_content)
-        player_passing = find_player_passing(html_content)
-        player_dribbling = find_player_dribbling(html_content)
-        player_defending = find_player_defending(html_content)
-        player_physicality = find_player_physicality(html_content)
+            # Find stats for strong foot, weak foot, skill stars, position
+            strong_foot = find_strong_foot(html_content)
+            weak_foot = find_weak_foot(html_content)
+            skill_stars = find_skill_stars(html_content)
+            # card_type = find_card_type(html_content)  # Commenting out card type
+            position = find_player_position(html_content)
+            player_pace = find_player_pace(html_content)
+            player_shooting = find_player_shooting(html_content)
+            player_passing = find_player_passing(html_content)
+            player_dribbling = find_player_dribbling(html_content)
+            player_defending = find_player_defending(html_content)
+            player_physicality = find_player_physicality(html_content)
 
-        # Validate that all data points have the same length
-        if not validate_data_lengths(player_names, strong_foot, weak_foot, skill_stars, card_type, position, player_pace, player_shooting, player_passing, player_dribbling, player_defending, player_physicality):
-            print("Data length mismatch. Aborting...")
-            return
+            # Validate that all data points have the same length
+            if not validate_data_lengths(player_names, strong_foot, weak_foot, skill_stars, position, player_pace, player_shooting, player_passing, player_dribbling, player_defending, player_physicality):
+                print(f"Data length mismatch on page {page_num}. Skipping this page.")
+                continue
 
-        # Create a list of dictionaries containing the player data
-        player_data = []
-        for name, foot, weak, skill, card, pos, pace, shooting, passing, dribbling, defending, physicality in zip(
-            player_names, strong_foot, weak_foot, skill_stars, card_type, position, player_pace,
-            player_shooting, player_passing, player_dribbling, player_defending, player_physicality):
-            player_data.append({
-                'name': name,
-                'strong_foot': foot,
-                'weak_foot': weak,
-                'skill_stars': skill,
-                'card_type': card,
-                'position': pos,
-                'pace': pace,
-                'shooting': shooting,
-                'passing': passing,
-                'dribbling': dribbling,
-                'defending': defending,
-                'physicality': physicality
-            })
+            # Create a list of dictionaries containing the player data
+            for name, foot, weak, skill, pos, pace, shooting, passing, dribbling, defending, physicality in zip(
+                player_names, strong_foot, weak_foot, skill_stars, position, player_pace,
+                player_shooting, player_passing, player_dribbling, player_defending, player_physicality):
+                all_player_data.append({
+                    'name': name,
+                    'strong_foot': foot,
+                    'weak_foot': weak,
+                    'skill_stars': skill,
+                    # 'card_type': card,  # Commented out card type
+                    'position': pos,
+                    'pace': pace,
+                    'shooting': shooting,
+                    'passing': passing,
+                    'dribbling': dribbling,
+                    'defending': defending,
+                    'physicality': physicality
+                })
+        else:
+            print(f"Failed to load page {page_num}. Skipping...")
 
-        # Convert the list of dictionaries to a DataFrame
-        df = pd.DataFrame(player_data)
+    # Convert the list of dictionaries to a DataFrame
+    df = pd.DataFrame(all_player_data)
 
-        # Print the DataFrame
-        print(df.to_string())
+    # Print the DataFrame
+    df['p_oid'] = range(1, len(df) + 1)
+    print(df.to_string())
 
-        # Optionally, you can save the dataframe to a CSV file
-        # df.to_csv('futbin_players.csv', index=False)
-    else:
-        print("Failed to load page content.")
+    df.to_csv('/Users/alexwade/Documents/WADE_BOT/futbin_players.csv', index=False)
 
 if __name__ == "__main__":
     asyncio.run(main())
