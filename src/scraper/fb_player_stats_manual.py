@@ -2,7 +2,12 @@ import asyncio
 from pyppeteer import launch
 import re
 import pandas as pd
+import warnings
+import nest_asyncio
+from datetime import datetime
 
+warnings.filterwarnings("ignore")
+nest_asyncio.apply()
 
 # Function to load webpage content
 async def load_webpage(url):
@@ -20,7 +25,8 @@ async def load_webpage(url):
         print(f"Error loading page: {e}")
         await browser.close()
         return None
-
+    finally:
+        await browser.close()  # Ensure the browser is closed even if there's an error
 
 # Function to extract player names
 def find_player_names(html_content):
@@ -98,6 +104,11 @@ def find_player_physicality(html_content):
     physicality_stats = re.findall(physicality_pattern, html_content, re.DOTALL)
     return physicality_stats
 
+# Function to extract player rating
+def find_player_rating(html_content):
+    rating_pattern = r'<div class="player-rating-card-text font-standard bold">(\d+)</div>'
+    ratings = re.findall(rating_pattern, html_content)
+    return ratings
 
 # Validation function to ensure all lists have the same length
 def validate_data_lengths(*data_lists):
@@ -123,15 +134,16 @@ async def scrape_page(url):
         player_dribbling = find_player_dribbling(html_content)
         player_defending = find_player_defending(html_content)
         player_physicality = find_player_physicality(html_content)
+        player_ratings = find_player_rating(html_content)  # Added player rating extraction
 
         # Validate that all lists are of equal length
         if validate_data_lengths(player_names, player_strong_foot, player_weak_foot, player_skills, player_position,
                                  player_pace, player_shooting, player_passing, player_dribbling, player_defending,
-                                 player_physicality):
+                                 player_physicality, player_ratings):
             player_data = []
-            for name, strong_foot, weak_foot, skills, position, pace, shooting, passing, dribbling, defending, physicality in zip(
+            for name, strong_foot, weak_foot, skills, position, pace, shooting, passing, dribbling, defending, physicality, rating in zip(
                     player_names, player_strong_foot, player_weak_foot, player_skills, player_position, player_pace,
-                    player_shooting, player_passing, player_dribbling, player_defending, player_physicality):
+                    player_shooting, player_passing, player_dribbling, player_defending, player_physicality, player_ratings):
                 player_data.append({
                     'name': name,
                     'strong_foot': strong_foot,
@@ -143,7 +155,8 @@ async def scrape_page(url):
                     'passing': passing,
                     'dribbling': dribbling,
                     'defending': defending,
-                    'physicality': physicality
+                    'physicality': physicality,
+                    'rating': rating  # Added rating to data
                 })
 
             df = pd.DataFrame(player_data)
@@ -156,12 +169,14 @@ async def scrape_page(url):
 
 
 async def main():
-    max_page_number = 10  # You can change this to the desired max page number
-    pages_per_chunk = 5
+    # scrape a max of 10 pages at a time
+    max_page_number = 80  # You can change this to the desired max page number
+    pages_per_chunk = 10
+    start_page = 71
     all_dataframes = []
 
     # Loop over pages in chunks of 5
-    for start_page in range(1, max_page_number + 1, pages_per_chunk):
+    for start_page in range(start_page, max_page_number + 1, pages_per_chunk):
         end_page = min(start_page + pages_per_chunk - 1, max_page_number)
 
         # Create URLs for the current chunk
@@ -184,7 +199,7 @@ async def main():
     print(final_df.to_string())
 
     # Optionally, save the final DataFrame to a CSV file
-    # final_df.to_csv('/Users/alexwade/Documents/WADE_BOT/futbin_players.csv', index=False)
+    final_df.to_csv(f'/Users/alexwade/Documents/WADE_BOT/RAW/futbin_players_stats_{datetime.now()}.csv', index=False)
 
 
 if __name__ == "__main__":
