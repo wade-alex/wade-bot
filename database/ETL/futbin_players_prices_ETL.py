@@ -18,7 +18,7 @@ def connect_db():
     return conn
 
 
-def upsert_player_prices(cursor, player):
+def insert_player_prices(cursor, player):
     # Generate p_oid by concatenating name and all player stats
     p_oid = f"{player['name']}-{player['pace']}-{player['shooting']}-{player['passing']}-{player['dribbling']}-{player['defending']}-{player['physicality']}-{player['rating']}"
 
@@ -26,18 +26,6 @@ def upsert_player_prices(cursor, player):
     INSERT INTO players.futbin_players_prices (
         p_oid, name, rating, price, pace, shooting, passing, dribbling, defending, physicality, dttm_price
     ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-    ON CONFLICT (p_oid)
-    DO UPDATE SET
-        name = EXCLUDED.name,
-        rating = EXCLUDED.rating,
-        price = EXCLUDED.price,
-        pace = EXCLUDED.pace,
-        shooting = EXCLUDED.shooting,
-        passing = EXCLUDED.passing,
-        dribbling = EXCLUDED.dribbling,
-        defending = EXCLUDED.defending,
-        physicality = EXCLUDED.physicality,
-        dttm_price = EXCLUDED.dttm_price;
     """
     cursor.execute(sql, (
         p_oid, player['name'], player['rating'], player['price'], player['pace'], player['shooting'],
@@ -46,21 +34,35 @@ def upsert_player_prices(cursor, player):
 
 
 def process_file(file_path):
-    # Read CSV file
-    df = pd.read_csv(file_path)
+    # Check if the file is empty
+    if os.stat(file_path).st_size == 0:
+        print(f"Skipping empty file: {file_path}")
+        return
 
-    # Connect to PostgreSQL
-    conn = connect_db()
-    cursor = conn.cursor()
+    try:
+        # Try reading the CSV file
+        df = pd.read_csv(file_path)
 
-    # Iterate over the DataFrame rows and upsert each player's price data
-    for _, row in df.iterrows():
-        upsert_player_prices(cursor, row)
+        # If the file is not empty, connect to PostgreSQL
+        if df.empty:
+            print(f"No data in file: {file_path}")
+            return
 
-    # Commit changes and close the connection
-    conn.commit()
-    cursor.close()
-    conn.close()
+        conn = connect_db()
+        cursor = conn.cursor()
+
+        # Iterate over the DataFrame rows and insert each player's price data
+        for _, row in df.iterrows():
+            insert_player_prices(cursor, row)
+
+        # Commit changes and close the connection
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+    except pd.errors.EmptyDataError as e:
+        print(f"Error reading file {file_path}: {e}")
+        return
 
 
 def move_file(file_path, processed_folder):

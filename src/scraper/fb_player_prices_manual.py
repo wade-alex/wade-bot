@@ -3,6 +3,9 @@ from pyppeteer import launch
 import re
 import pandas as pd
 from datetime import datetime
+import nest_asyncio
+
+nest_asyncio.apply()
 
 # Function to load webpage content
 async def load_webpage(url):
@@ -144,7 +147,7 @@ async def main():
     max_page_number = 30  # You can change this to the desired max page number
     pages_per_chunk = 10
     all_dataframes = []
-    start_page = 1
+    start_page = 21
 
     # Loop over pages in chunks of 5
     for start_page in range(start_page, max_page_number + 1, pages_per_chunk):
