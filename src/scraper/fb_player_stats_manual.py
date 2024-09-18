@@ -2,7 +2,12 @@ import asyncio
 from pyppeteer import launch
 import re
 import pandas as pd
+import warnings
+import nest_asyncio
 from datetime import datetime
+
+warnings.filterwarnings("ignore")
+nest_asyncio.apply()
 
 # Function to load webpage content
 async def load_webpage(url):
@@ -30,18 +35,32 @@ def find_player_names(html_content):
     return matches
 
 
-# Function to extract player price
-def find_player_price(html_content):
-    price_pattern = r'<td class="table-price no-wrap platform-ps-only">\s*<div class="price bold  centered small-row align-center">(\d+)<img alt="Coin"'
-    prices = re.findall(price_pattern, html_content)
-    return prices
+# Function to extract strong foot
+def find_strong_foot(html_content):
+    foot_pattern = r'<td class="table-foot"><img alt="Strong Foot" src="/design2/img/static/filters/foot-(left|right).svg"'
+    strong_foot = re.findall(foot_pattern, html_content)
+    return strong_foot
 
 
-# Function to extract player rating
-def find_player_rating(html_content):
-    rating_pattern = r'<div class="player-rating-card-text font-standard bold">(\d+)</div>'
-    ratings = re.findall(rating_pattern, html_content)
-    return ratings
+# Function to extract weak foot
+def find_weak_foot(html_content):
+    weak_foot_pattern = r'<td class="table-weak-foot">(\d+)<i'
+    weak_foot_stats = re.findall(weak_foot_pattern, html_content)
+    return weak_foot_stats
+
+
+# Function to extract skill stars
+def find_skill_stars(html_content):
+    skill_stars_pattern = r'<td class="table-skills">(\d+)<i'
+    skill_stars = re.findall(skill_stars_pattern, html_content)
+    return skill_stars
+
+
+# Function to extract player position
+def find_player_position(html_content):
+    position_pattern = r'<td class="table-pos">\s*<div class="bold">([^<]+)</div>'
+    positions = re.findall(position_pattern, html_content)
+    return positions
 
 
 # Function to extract pace
@@ -85,6 +104,11 @@ def find_player_physicality(html_content):
     physicality_stats = re.findall(physicality_pattern, html_content, re.DOTALL)
     return physicality_stats
 
+# Function to extract player rating
+def find_player_rating(html_content):
+    rating_pattern = r'<div class="player-rating-card-text font-standard bold">(\d+)</div>'
+    ratings = re.findall(rating_pattern, html_content)
+    return ratings
 
 # Validation function to ensure all lists have the same length
 def validate_data_lengths(*data_lists):
@@ -100,34 +124,39 @@ async def scrape_page(url):
 
     if html_content:
         player_names = find_player_names(html_content)
-        player_ratings = find_player_rating(html_content)
-        player_prices = find_player_price(html_content)
+        player_strong_foot = find_strong_foot(html_content)
+        player_weak_foot = find_weak_foot(html_content)
+        player_skills = find_skill_stars(html_content)
+        player_position = find_player_position(html_content)
         player_pace = find_player_pace(html_content)
         player_shooting = find_player_shooting(html_content)
         player_passing = find_player_passing(html_content)
         player_dribbling = find_player_dribbling(html_content)
         player_defending = find_player_defending(html_content)
         player_physicality = find_player_physicality(html_content)
-        current_timestamp = [datetime.now()] * len(player_names)  # Timestamp for price scraping
+        player_ratings = find_player_rating(html_content)  # Added player rating extraction
 
         # Validate that all lists are of equal length
-        if validate_data_lengths(player_names, player_ratings, player_prices, player_pace, player_shooting,
-                                 player_passing, player_dribbling, player_defending, player_physicality):
+        if validate_data_lengths(player_names, player_strong_foot, player_weak_foot, player_skills, player_position,
+                                 player_pace, player_shooting, player_passing, player_dribbling, player_defending,
+                                 player_physicality, player_ratings):
             player_data = []
-            for name, rating, price, pace, shooting, passing, dribbling, defending, physicality, dttm in zip(
-                    player_names, player_ratings, player_prices, player_pace, player_shooting, player_passing,
-                    player_dribbling, player_defending, player_physicality, current_timestamp):
+            for name, strong_foot, weak_foot, skills, position, pace, shooting, passing, dribbling, defending, physicality, rating in zip(
+                    player_names, player_strong_foot, player_weak_foot, player_skills, player_position, player_pace,
+                    player_shooting, player_passing, player_dribbling, player_defending, player_physicality, player_ratings):
                 player_data.append({
                     'name': name,
-                    'rating': rating,
-                    'price': price,
+                    'strong_foot': strong_foot,
+                    'weak_foot': weak_foot,
+                    'skills': skills,
+                    'position': position,
                     'pace': pace,
                     'shooting': shooting,
                     'passing': passing,
                     'dribbling': dribbling,
                     'defending': defending,
                     'physicality': physicality,
-                    'dttm_price': dttm  # Added timestamp column
+                    'rating': rating  # Added rating to data
                 })
 
             df = pd.DataFrame(player_data)
@@ -140,12 +169,14 @@ async def scrape_page(url):
 
 
 async def main():
-    max_page_number = 10  # You can change this to the desired max page number
-    pages_per_chunk = 5
+    # scrape a max of 10 pages at a time
+    max_page_number = 80  # You can change this to the desired max page number
+    pages_per_chunk = 10
+    start_page = 71
     all_dataframes = []
 
     # Loop over pages in chunks of 5
-    for start_page in range(1, max_page_number + 1, pages_per_chunk):
+    for start_page in range(start_page, max_page_number + 1, pages_per_chunk):
         end_page = min(start_page + pages_per_chunk - 1, max_page_number)
 
         # Create URLs for the current chunk
@@ -168,7 +199,7 @@ async def main():
     print(final_df.to_string())
 
     # Optionally, save the final DataFrame to a CSV file
-    # final_df.to_csv('/Users/alexwade/Documents/WADE_BOT/futbin_players.csv', index=False)
+    final_df.to_csv(f'/Users/alexwade/Documents/WADE_BOT/RAW/futbin_players_stats_{datetime.now()}.csv', index=False)
 
 
 if __name__ == "__main__":
