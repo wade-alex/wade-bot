@@ -44,7 +44,7 @@ def find_player_names(html_content):
 
 # Function to extract player price
 def find_player_price(html_content):
-    price_pattern = r'<td class="table-price no-wrap platform-ps-only">\s*<div class="price bold  centered small-row align-center">(\d+)<img alt="Coin"'
+    price_pattern = r'<td class="table-price no-wrap platform-ps-only">\s*<div class="price bold  centered small-row align-center">(\d+(?:\.\d+)?[kKmM]?)<img alt="Coin"'
     prices = re.findall(price_pattern, html_content)
     return prices
 
