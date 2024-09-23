@@ -5,7 +5,7 @@ import subprocess
 
 # Paths
 ui_file = '/Users/alexwade/Documents/GitHub/wade-bot/src/app/_dev/Modern_GUI_PyDracula_PySide6_or_PyQt6/main.ui'
-new_ui_folder = '/Users/alexwade/Documents/GitHub/wade-bot/src/app/_dev/_new_ui'
+new_ui_folder = '/Users/alexwade/Documents/GitHub/wade-bot/src/app/_dev/__new_ui_functions'
 output_python_file = os.path.join(new_ui_folder, 'ui_main.py')
 
 # Check if the target folder exists, if not, create it
