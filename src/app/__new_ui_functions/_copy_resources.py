@@ -3,7 +3,7 @@ import subprocess
 
 # Paths
 qrc_file = '/Users/alexwade/Documents/GitHub/wade-bot/src/app/_dev/Modern_GUI_PyDracula_PySide6_or_PyQt6/resources.qrc'
-new_ui_folder = '/Users/alexwade/Documents/GitHub/wade-bot/src/app/_dev/_new_ui'
+new_ui_folder = '/Users/alexwade/Documents/GitHub/wade-bot/src/app/_dev/__new_ui_functions'
 output_python_file = os.path.join(new_ui_folder, 'resources_rc.py')
 
 # Check if the target folder exists, if not, create it
