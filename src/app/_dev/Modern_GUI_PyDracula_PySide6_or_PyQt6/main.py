@@ -17,6 +17,12 @@
 import sys
 import os
 import platform
+from PyQt6 import uic
+from PyQt6.QtWidgets import QApplication, QMainWindow
+from PyQt6.QtWebEngineWidgets import QWebEngineView
+import plotly.graph_objects as go
+import tempfile
+import pandas as pd
 
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
@@ -105,6 +111,13 @@ class MainWindow(QMainWindow):
         widgets.stackedWidget.setCurrentWidget(widgets.home)
         widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
 
+        self.test_chart = self.findChild(QWebEngineView, 'test_chart')
+        if self.test_chart is None:
+            print("Error: QWebEngineView 'test_chart' not found!")
+        else:
+            print("QWebEngineView 'test_chart' found successfully.")
+            # Load the Plotly chart
+            self.display_plotly_chart()
 
     # BUTTONS CLICK
     # Post here your functions for clicked buttons
@@ -157,8 +170,63 @@ class MainWindow(QMainWindow):
         if event.buttons() == Qt.RightButton:
             print('Mouse click: RIGHT CLICK')
 
+    def display_plotly_chart(self):
+        # Create the Plotly chart with a time slider
+        time = pd.date_range("2023-01-01", periods=100, freq='D')
+        line1 = [i + 10 for i in range(100)]
+        line2 = [i + 20 for i in range(100)]
+        line3 = [i + 30 for i in range(100)]
+
+        # Create the figure with three different lines
+        fig = go.Figure()
+
+        # Line 1
+        fig.add_trace(go.Scatter(x=time, y=line1, mode='lines', name="Line 1"))
+
+        # Line 2
+        fig.add_trace(go.Scatter(x=time, y=line2, mode='lines', name="Line 2"))
+
+        # Line 3
+        fig.add_trace(go.Scatter(x=time, y=line3, mode='lines', name="Line 3"))
+
+        # Add time slider
+        fig.update_layout(
+            title="Test Chart with Time Slider",
+            xaxis=dict(
+                rangeselector=dict(
+                    buttons=[
+                        dict(count=1, label="1m", step="month", stepmode="backward"),
+                        dict(count=6, label="6m", step="month", stepmode="backward"),
+                        dict(step="all")
+                    ]
+                ),
+                rangeslider=dict(visible=True),
+                type="date"
+            ),
+            yaxis_title="Values",
+            xaxis_title="Time"
+        )
+
+        # Save the Plotly chart as an HTML file
+        # with tempfile.NamedTemporaryFile(suffix=".html", delete=False) as tmpfile:
+        #     fig.write_html(tmpfile.name)
+        #
+        #     # Check if test_chart (QWebEngineView) exists before setting the URL
+        #     if self.test_chart is not None:
+        #         # Load the HTML file into the QWebEngineView widget
+        #         self.test_chart.setUrl(f"file://{tmpfile.name}")
+        #     else:
+        #         print("Error: QWebEngineView 'test_chart' not found!")
+        with tempfile.NamedTemporaryFile(suffix=".html", delete=False) as tmpfile:
+            tmpfile.write(b"<html><body><h1>Hello, WebEngine!</h1></body></html>")
+            tmpfile_path = f"file://{tmpfile.name}"
+
+            print(tmpfile_path)  # Debugging: Print the file path to verify it
+            self.test_chart.setUrl("https://www.example.com")
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon("icon.ico"))
+    app.setWindowIcon(QIcon("w-logo.png"))
     window = MainWindow()
     sys.exit(app.exec_())
+

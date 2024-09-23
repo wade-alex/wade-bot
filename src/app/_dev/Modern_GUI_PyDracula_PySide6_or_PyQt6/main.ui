@@ -929,7 +929,7 @@ Button */
                    <enum>Qt::LayoutDirection::LeftToRight</enum>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-image: url(:/icons/images/icons/cil-file.png);</string>
+                   <string notr="true">background-image: url(:/icons/images/icons/cil-fingerprint.png);</string>
                   </property>
                   <property name="text">
                    <string>New</string>
@@ -1577,7 +1577,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                    </font>
                   </property>
                   <property name="text">
-                   <string>PyDracula APP - Theme with colors based on Dracula for Python.</string>
+                   <string>Cathedral</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
@@ -1853,7 +1853,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>0</number>
+                      <number>2</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -2157,7 +2157,7 @@ background-repeat: no-repeat;</string>
                                 <rect>
                                  <x>0</x>
                                  <y>0</y>
-                                 <width>224</width>
+                                 <width>351</width>
                                  <height>224</height>
                                 </rect>
                                </property>
@@ -2379,7 +2379,7 @@ background-repeat: no-repeat;</string>
                                </colorrole>
                                <colorrole role="PlaceholderText">
                                 <brush brushstyle="SolidPattern">
-                                 <color alpha="128">
+                                 <color alpha="255">
                                   <red>221</red>
                                   <green>221</green>
                                   <blue>221</blue>
@@ -2444,7 +2444,7 @@ background-repeat: no-repeat;</string>
                                </colorrole>
                                <colorrole role="PlaceholderText">
                                 <brush brushstyle="SolidPattern">
-                                 <color alpha="128">
+                                 <color alpha="255">
                                   <red>221</red>
                                   <green>221</green>
                                   <blue>221</blue>
@@ -2509,7 +2509,7 @@ background-repeat: no-repeat;</string>
                                </colorrole>
                                <colorrole role="PlaceholderText">
                                 <brush brushstyle="SolidPattern">
-                                 <color alpha="128">
+                                 <color alpha="255">
                                   <red>221</red>
                                   <green>221</green>
                                   <blue>221</blue>
@@ -2704,6 +2704,9 @@ background-repeat: no-repeat;</string>
                      </widget>
                      <widget class="QWidget" name="new_page">
                       <layout class="QVBoxLayout" name="verticalLayout_20">
+                       <item>
+                        <widget class="QWebEngineView" name="test_chart" native="true"/>
+                       </item>
                        <item>
                         <widget class="QLabel" name="label">
                          <property name="text">
@@ -3048,6 +3051,14 @@ background-repeat: no-repeat;</string>
    </layout>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QWebEngineView</class>
+   <extends>QWidget</extends>
+   <header>QtWebEngineWidgets/QWebEngineView.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="resources.qrc"/>
  </resources>
