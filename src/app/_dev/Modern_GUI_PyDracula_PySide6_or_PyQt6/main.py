@@ -171,8 +171,8 @@ class MainWindow(QMainWindow):
         if event.buttons() == Qt.RightButton:
             print('Mouse click: RIGHT CLICK')
 
-    def display_plotly_chart(self):
 
+    def display_plotly_chart(self):
         # Create the Plotly chart with a time slider
         time = pd.date_range("2023-01-01", periods=100, freq='D')
         line1 = [i + 10 for i in range(100)]
@@ -188,6 +188,7 @@ class MainWindow(QMainWindow):
         fig.add_trace(go.Scatter(x=time, y=line2, mode='lines', name="Line 2"))
         # Line 3
         fig.add_trace(go.Scatter(x=time, y=line3, mode='lines', name="Line 3"))
+
         # Add time slider
         fig.update_layout(
             title="Test Chart with Time Slider",
@@ -204,17 +205,53 @@ class MainWindow(QMainWindow):
             ),
             yaxis_title="Values",
             xaxis_title="Time"
+            ,
+            #
+            # # Set the background to be fully transparent
+            paper_bgcolor='rgba(0,0,0,0)' # Outer area (paper)
+            # plot_bgcolor='rgba(0,0,0,0)',  # Inner area (plot)
         )
 
-        # Save the Plotly chart as an HTML file
+        # Generate HTML content from the figure
         html_content = fig.to_html(include_plotlyjs='cdn')
+
+        # Set HTML with transparent body and container
+        transparent_html = f"""
+        <html>
+            <head>
+                <style>
+                    html, body {{
+                        margin: 0;
+                        padding: 0;
+                        background-color: transparent; /* Ensure the window background is transparent */
+                    }}
+                    #chart-container {{
+                        width: 100%;
+                        height: 100%;
+                        background-color: transparent; /* Container background is transparent */
+                    }}
+                </style>
+            </head>
+            <body>
+                <div id="chart-container">
+                    {html_content}
+                </div>
+            </body>
+        </html>
+        """
 
         # Load the HTML content into the QWebEngineView widget
         if self.test_chart is not None:
-            self.test_chart.setHtml(html_content)
+            # Enable transparency in the QWebEngineView widget
+            self.test_chart.setAttribute(Qt.WA_TranslucentBackground, True)
+            self.test_chart.setStyleSheet("background: transparent;")
+            self.test_chart.page().setBackgroundColor(Qt.transparent)
+
+            # Load the transparent HTML content
+            self.test_chart.setHtml(transparent_html)
             self.test_chart.update()  # Forces a repaint to ensure the view is refreshed
         else:
-                print("Error: QWebEngineView 'test_chart' not found!")
+            print("Error: QWebEngineView 'test_chart' not found!")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
