@@ -107,11 +107,9 @@ class MainWindow(QMainWindow):
         widgets.stackedWidget.setCurrentWidget(widgets.home)
         widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
 
-        # Set global timer to refresh charts
+        # Load Chart in and display it
         self.test_chart = self.ui.test_chart
-        self.timer = QTimer(self)
-        self.timer.timeout.connect(self.display_plotly_chart)  # Set the function to call
-        self.timer.start(1000)  # Refresh every 1000ms (1 second)
+        self.display_plotly_chart()
 
         if self.test_chart is None:
             print("Error: QWebEngineView 'test_chart' not found!")
@@ -172,7 +170,6 @@ class MainWindow(QMainWindow):
             print('Mouse click: RIGHT CLICK')
 
     def display_plotly_chart(self):
-
         # Create the Plotly chart with a time slider
         time = pd.date_range("2023-01-01", periods=100, freq='D')
         line1 = [i + 10 for i in range(100)]
@@ -188,9 +185,11 @@ class MainWindow(QMainWindow):
         fig.add_trace(go.Scatter(x=time, y=line2, mode='lines', name="Line 2"))
         # Line 3
         fig.add_trace(go.Scatter(x=time, y=line3, mode='lines', name="Line 3"))
+
         # Add time slider
         fig.update_layout(
             title="Test Chart with Time Slider",
+            title_font=dict(color='white'),  # Set title font color to white
             xaxis=dict(
                 rangeselector=dict(
                     buttons=[
@@ -200,21 +199,60 @@ class MainWindow(QMainWindow):
                     ]
                 ),
                 rangeslider=dict(visible=True),
-                type="date"
+                type="date",
+                tickfont=dict(color='white'),  # Set x-axis tick labels to white
+                title=dict(text="Time", font=dict(color='white'))  # Set x-axis title to white
             ),
-            yaxis_title="Values",
-            xaxis_title="Time"
+            yaxis=dict(
+                tickfont=dict(color='white'),  # Set y-axis tick labels to white
+                title=dict(text="Values", font=dict(color='white'))  # Set y-axis title to white
+            ),
+            font=dict(color='white'),  # Set the default font color to white for all elements
+            legend=dict(font=dict(color='white')),  # Set legend font color to white
+            paper_bgcolor='rgba(0,0,0,0)'  # Outer area (paper) background transparent
+            # plot_bgcolor='rgba(0,0,0,0)'  # Inner plot area background transparent
         )
 
-        # Save the Plotly chart as an HTML file
+        # Generate HTML content from the figure
         html_content = fig.to_html(include_plotlyjs='cdn')
+
+        # Set HTML with transparent body and container
+        transparent_html = f"""
+        <html>
+            <head>
+                <style>
+                    html, body {{
+                        margin: 0;
+                        padding: 0;
+                        background-color: transparent; /* Ensure the window background is transparent */
+                    }}
+                    #chart-container {{
+                        width: 100%;
+                        height: 100%;
+                        background-color: transparent; /* Container background is transparent */
+                    }}
+                </style>
+            </head>
+            <body>
+                <div id="chart-container">
+                    {html_content}
+                </div>
+            </body>
+        </html>
+        """
 
         # Load the HTML content into the QWebEngineView widget
         if self.test_chart is not None:
-            self.test_chart.setHtml(html_content)
+            # Enable transparency in the QWebEngineView widget
+            self.test_chart.setAttribute(Qt.WA_TranslucentBackground, True)
+            self.test_chart.setStyleSheet("background: transparent;")
+            self.test_chart.page().setBackgroundColor(Qt.transparent)
+
+            # Load the transparent HTML content
+            self.test_chart.setHtml(transparent_html)
             self.test_chart.update()  # Forces a repaint to ensure the view is refreshed
         else:
-                print("Error: QWebEngineView 'test_chart' not found!")
+            print("Error: QWebEngineView 'test_chart' not found!")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
