@@ -16,12 +16,7 @@
 
 import sys
 import os
-import platform
-from PyQt6 import uic
-from PyQt6.QtWidgets import QApplication, QMainWindow
-from PyQt6.QtWebEngineWidgets import QWebEngineView
 import plotly.graph_objects as go
-import tempfile
 import pandas as pd
 
 # IMPORT / GUI AND MODULES AND WIDGETS
@@ -36,12 +31,13 @@ widgets = None
 
 class MainWindow(QMainWindow):
     def __init__(self):
-        QMainWindow.__init__(self)
+        super(MainWindow, self).__init__()
 
-        # SET AS GLOBAL WIDGETS
-        # ///////////////////////////////////////////////////////////////
+        # Initialize UI components from Ui_MainWindow
         self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
+        self.ui.setupUi(self)  # This sets up all widgets defined in the .ui file
+
+        # Set global reference to the widgets
         global widgets
         widgets = self.ui
 
@@ -51,8 +47,8 @@ class MainWindow(QMainWindow):
 
         # APP NAME
         # ///////////////////////////////////////////////////////////////
-        title = "PyDracula - Modern GUI"
-        description = "PyDracula APP - Theme with colors based on Dracula for Python."
+        title = "Cathedral"
+        description = "Cathedral"
         # APPLY TEXTS
         self.setWindowTitle(title)
         widgets.titleRightInfo.setText(description)
@@ -111,7 +107,12 @@ class MainWindow(QMainWindow):
         widgets.stackedWidget.setCurrentWidget(widgets.home)
         widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
 
-        self.test_chart = self.findChild(QWebEngineView, 'test_chart')
+        # Set global timer to refresh charts
+        self.test_chart = self.ui.test_chart
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.display_plotly_chart)  # Set the function to call
+        self.timer.start(1000)  # Refresh every 1000ms (1 second)
+
         if self.test_chart is None:
             print("Error: QWebEngineView 'test_chart' not found!")
         else:
@@ -171,6 +172,7 @@ class MainWindow(QMainWindow):
             print('Mouse click: RIGHT CLICK')
 
     def display_plotly_chart(self):
+
         # Create the Plotly chart with a time slider
         time = pd.date_range("2023-01-01", periods=100, freq='D')
         line1 = [i + 10 for i in range(100)]
@@ -182,13 +184,10 @@ class MainWindow(QMainWindow):
 
         # Line 1
         fig.add_trace(go.Scatter(x=time, y=line1, mode='lines', name="Line 1"))
-
         # Line 2
         fig.add_trace(go.Scatter(x=time, y=line2, mode='lines', name="Line 2"))
-
         # Line 3
         fig.add_trace(go.Scatter(x=time, y=line3, mode='lines', name="Line 3"))
-
         # Add time slider
         fig.update_layout(
             title="Test Chart with Time Slider",
@@ -208,21 +207,14 @@ class MainWindow(QMainWindow):
         )
 
         # Save the Plotly chart as an HTML file
-        # with tempfile.NamedTemporaryFile(suffix=".html", delete=False) as tmpfile:
-        #     fig.write_html(tmpfile.name)
-        #
-        #     # Check if test_chart (QWebEngineView) exists before setting the URL
-        #     if self.test_chart is not None:
-        #         # Load the HTML file into the QWebEngineView widget
-        #         self.test_chart.setUrl(f"file://{tmpfile.name}")
-        #     else:
-        #         print("Error: QWebEngineView 'test_chart' not found!")
-        with tempfile.NamedTemporaryFile(suffix=".html", delete=False) as tmpfile:
-            tmpfile.write(b"<html><body><h1>Hello, WebEngine!</h1></body></html>")
-            tmpfile_path = f"file://{tmpfile.name}"
+        html_content = fig.to_html(include_plotlyjs='cdn')
 
-            print(tmpfile_path)  # Debugging: Print the file path to verify it
-            self.test_chart.setUrl("https://www.example.com")
+        # Load the HTML content into the QWebEngineView widget
+        if self.test_chart is not None:
+            self.test_chart.setHtml(html_content)
+            self.test_chart.update()  # Forces a repaint to ensure the view is refreshed
+        else:
+                print("Error: QWebEngineView 'test_chart' not found!")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
