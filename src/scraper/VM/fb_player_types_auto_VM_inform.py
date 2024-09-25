@@ -1,3 +1,6 @@
+# Player types for all links in inform index
+# Once per day scrape
+
 # Scrapes player types for ... (fill in with custom links, 10 at a time
 # make copies of the script to get all special players I'm scraping
 # informs, the rare silvers, etc.
@@ -159,8 +162,16 @@ def upload_df_to_s3(dataframe, bucket_name, s3_folder):
 # Main function to scrape all URLs using a single browser instance
 async def main():
     urls = [
-        'https://www.futbin.com/players?page=1&player_rating=83-83&sort=ps_price&order=asc',
-        'https://www.futbin.com/players?page=1&player_rating=84-84&sort=ps_price&order=asc'
+        'https://www.futbin.com/players?order=asc&player_rating=79-79&sort=ps_price&version=if_gold&page=1',
+        'https://www.futbin.com/players?order=asc&player_rating=80-80&sort=ps_price&version=if_gold&page=1',
+        'https://www.futbin.com/players?order=asc&player_rating=81-81&sort=ps_price&version=if_gold&page=1',
+        'https://www.futbin.com/players?order=asc&player_rating=82-82&sort=ps_price&version=if_gold&page=1',
+        'https://www.futbin.com/players?order=asc&player_rating=83-83&sort=ps_price&version=if_gold&page=1',
+        'https://www.futbin.com/players?order=asc&player_rating=84-84&sort=ps_price&version=if_gold&page=1',
+        'https://www.futbin.com/players?order=asc&player_rating=85-85&sort=ps_price&version=if_gold&page=1',
+        'https://www.futbin.com/players?order=asc&player_rating=86-86&sort=ps_price&version=if_gold&page=1',
+        'https://www.futbin.com/players?order=asc&player_rating=87-87&sort=ps_price&version=if_gold&page=1',
+        'https://www.futbin.com/players?order=asc&player_rating=88-88&sort=ps_price&version=if_gold&page=1',
     ]
 
     all_dataframes = []

@@ -1,3 +1,4 @@
+-- No need to include in Airflow
 -- daily
 
 create schema reporting;

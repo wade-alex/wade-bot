@@ -1,5 +1,7 @@
 # /path/to/scraper.py
 ## this is the script that pulls 10 windows at a time
+## Add links to silver players
+
 import asyncio
 from pyppeteer import launch
 import re

@@ -1,3 +1,4 @@
+## **USE**
 ## Use this to automatically pull all CSV's from thr RAW s3
 ## File and load into the price history table
 
@@ -218,6 +219,33 @@ def main():
         delete_file_from_s3(file_name, 'Raw')
     else:
         print("No file was processed, skipping deletion from S3.")
+
+def main():
+    # Step 1: Download all CSV files from the S3 bucket folder to RAW_FOLDER
+    files_to_process = download_files_from_s3()
+
+    # Check if any files were downloaded
+    if not files_to_process:
+        print("No files downloaded from S3. Exiting process.")
+        return
+
+    # Step 2: Process each file
+    for file_path in files_to_process:
+        print(f"Processing file: {file_path}")
+        process_file(file_path)
+
+        file_name = os.path.basename(file_path)
+
+        # Step 3: After processing, move the file to the PROCESSED_FOLDER
+        move_file(file_path, os.path.join(PROCESSED_FOLDER, file_name))
+        print(f"Moved file to: {PROCESSED_FOLDER}")
+
+        # Step 4: Delete the file from the S3 'Raw' folder after processing
+        delete_file_from_s3(file_name, 'Raw')
+        print(f"Deleted file {file_name} from Raw folder in S3")
+
+    # Step 5: Upload processed files to S3 (optional, can be done after all files are processed)
+    upload_processed_files_to_s3()
 
 if __name__ == "__main__":
     main()
