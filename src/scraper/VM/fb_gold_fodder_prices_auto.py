@@ -1,4 +1,5 @@
 # /path/to/scraper.py
+## this is the script that pulls 10 windows at a time
 import asyncio
 from pyppeteer import launch
 import re
@@ -18,33 +19,14 @@ s3 = boto3.client(
 nest_asyncio.apply()
 
 # Function to load webpage content
-import os
-from pyppeteer import launch
-
-
 async def load_webpage(url):
-    # Use /tmp as the directory to download and extract Chromium in AWS Lambda
-    executable_path = '/tmp/headless-chromium'  # This will be the location where Chromium is downloaded/extracted
-    chromium_dir = '/tmp/chromium'
-
-    if not os.path.exists(chromium_dir):
-        os.makedirs(chromium_dir)
-
-    browser = await launch(
-        headless=True,
-        executablePath=executable_path,  # Use the custom binary path
-        userDataDir=chromium_dir,  # Use /tmp directory for user data
-        args=['--no-sandbox', '--disable-setuid-sandbox']
-    )
-
+    browser = await launch(headless=True)
     page = await browser.newPage()
     await page.setUserAgent(
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-    )
-
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
     try:
         await page.goto(url, {'timeout': 60000, 'waitUntil': 'domcontentloaded'})
-        await asyncio.sleep(3)  # Allow the page to fully load
+        await asyncio.sleep(3)  # Sleep to allow page to fully load
         html_content = await page.content()
         await browser.close()
         return html_content
@@ -63,7 +45,7 @@ def find_player_names(html_content):
 
 # Function to extract player price
 def find_player_price(html_content):
-    price_pattern = r'<td class="table-price no-wrap platform-ps-only">\s*<div class="price bold  centered small-row align-center">(\d+)<img alt="Coin"'
+    price_pattern = r'<td class="table-price no-wrap platform-ps-only">\s*<div class="price bold  centered small-row align-center">(\d+(?:\.\d+)?[kKmM]?)<img alt="Coin"'
     prices = re.findall(price_pattern, html_content)
     return prices
 
@@ -218,11 +200,5 @@ async def main():
     upload_df_to_s3(final_df, 'wade-bot-scraper-dumps', 'Raw')
 
 # Run the main function
-# AWS Lambda handler function
-def lambda_handler(event, context):
-    # This function is the entry point for AWS Lambda
+if __name__ == "__main__":
     asyncio.run(main())
-    return {
-        'statusCode': 200,
-        'body': 'Scraping completed and data uploaded to S3.'
-    }

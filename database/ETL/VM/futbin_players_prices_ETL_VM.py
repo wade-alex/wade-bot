@@ -1,3 +1,6 @@
+## Use this to automatically pull all CSV's from thr RAW s3
+## File and load into the price history table
+
 import os
 import pandas as pd
 import psycopg2
@@ -107,7 +110,8 @@ def download_files_from_s3():
 
         for obj in response['Contents']:
             key = obj['Key']
-            if key.endswith('.csv'):  # Process only CSV files
+            # Only process files that start with 'futbin_player_prices' and end with '.csv'
+            if key.startswith(f"{S3_RAW_FOLDER}futbin_players_prices") and key.endswith('.csv'):
                 file_name = key.split('/')[-1]
                 local_path = os.path.join(RAW_FOLDER, file_name)
 
@@ -190,6 +194,11 @@ def main():
     # Step 1: Download all CSV files from the S3 bucket folder to RAW_FOLDER
     files_to_process = download_files_from_s3()
 
+    # Check if any files were downloaded
+    if not files_to_process:
+        print("No files downloaded from S3. Exiting process.")
+        return
+
     # Step 2: Process each file
     for file_path in files_to_process:
         print(f"Processing file: {file_path}")
@@ -198,11 +207,17 @@ def main():
         file_name = os.path.basename(file_path)
 
         # Step 3: After processing, move the file to the PROCESSED_FOLDER
-        move_file(file_path, os.path.join(PROCESSED_FOLDER, os.path.basename(file_path)))
+        move_file(file_path, os.path.join(PROCESSED_FOLDER, file_name))
         print(f"Moved file to: {PROCESSED_FOLDER}")
 
     # Step 4: Upload processed files to S3
     upload_processed_files_to_s3()
-    delete_file_from_s3(file_name, 'Raw')
+
+    # Step 5: Delete the file from the S3 'Raw' folder, only if files were processed
+    if file_name:  # Ensure file_name is defined before trying to delete
+        delete_file_from_s3(file_name, 'Raw')
+    else:
+        print("No file was processed, skipping deletion from S3.")
+
 if __name__ == "__main__":
     main()

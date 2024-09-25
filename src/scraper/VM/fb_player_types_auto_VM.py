@@ -1,6 +1,10 @@
+# Scrapes player types for ... (fill in with custom links, 10 at a time
+# make copies of the script to get all special players I'm scraping
+# informs, the rare silvers, etc.
+
 # /path/to/scraper.py
 import asyncio
-from pyppeteer import launch
+from playwright.async_api import async_playwright
 import re
 import pandas as pd
 from datetime import datetime
@@ -17,36 +21,38 @@ s3 = boto3.client(
 # Apply nest_asyncio for environments like Jupyter
 nest_asyncio.apply()
 
-# Function to load webpage content
-async def load_webpage(url):
-    browser = await launch(headless=True)
-    page = await browser.newPage()
-    await page.setUserAgent(
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
+# Function to load webpage content using Playwright
+async def load_webpage(playwright, url):
+    browser = await playwright.chromium.launch(headless=True)
+
+    page = await browser.new_page(user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
+
     try:
-        await page.goto(url, {'timeout': 60000, 'waitUntil': 'domcontentloaded'})
-        await asyncio.sleep(3)  # Sleep to allow page to fully load
+        print(f"Loading URL: {url}")
+        await page.goto(url, timeout=480000,  wait_until='domcontentloaded')
+        print(f"Page loaded: {url}")
+
         html_content = await page.content()
-        await browser.close()
         return html_content
     except Exception as e:
         print(f"Error loading page {url}: {e}")
-        await browser.close()
         return None
     finally:
+        await page.close()
         await browser.close()
+
+# Function to find player type
+def find_player_type(html_content):
+    # Regex pattern to extract player type between <div class="table-player-revision">...</div>
+    pattern = r'<div class="table-player-revision">(.*?)</div>'
+    player_types = re.findall(pattern, html_content, re.DOTALL)  # DOTALL to capture any special characters
+    return player_types
 
 # Function to extract player names
 def find_player_names(html_content):
     pattern = r'/25/player/\d+/([^">]+)">'
     matches = re.findall(pattern, html_content)
     return matches
-
-# Function to extract player price
-def find_player_price(html_content):
-    price_pattern = r'<td class="table-price no-wrap platform-ps-only">\s*<div class="price bold  centered small-row align-center">(\d+(?:\.\d+)?[kKmM]?)<img alt="Coin"'
-    prices = re.findall(price_pattern, html_content)
-    return prices
 
 # Function to extract player rating
 def find_player_rating(html_content):
@@ -99,39 +105,37 @@ def validate_data_lengths(*data_lists):
     return True
 
 # Function to scrape a single page
-async def scrape_page(url):
-    html_content = await load_webpage(url)
+async def scrape_page(playwright, url):
+    html_content = await load_webpage(playwright, url)
 
     if html_content:
         player_names = find_player_names(html_content)
         player_ratings = find_player_rating(html_content)
-        player_prices = find_player_price(html_content)
         player_pace = find_player_pace(html_content)
         player_shooting = find_player_shooting(html_content)
         player_passing = find_player_passing(html_content)
         player_dribbling = find_player_dribbling(html_content)
         player_defending = find_player_defending(html_content)
         player_physicality = find_player_physicality(html_content)
-        current_timestamp = [datetime.now()] * len(player_names)  # Timestamp for price scraping
+        player_types = find_player_type(html_content)
 
         # Validate that all lists are of equal length
-        if validate_data_lengths(player_names, player_ratings, player_prices, player_pace, player_shooting,
-                                 player_passing, player_dribbling, player_defending, player_physicality):
+        if validate_data_lengths(player_names, player_ratings, player_pace, player_shooting,
+                                 player_passing, player_dribbling, player_defending, player_physicality, player_types):
             player_data = []
-            for name, rating, price, pace, shooting, passing, dribbling, defending, physicality, dttm in zip(
-                    player_names, player_ratings, player_prices, player_pace, player_shooting, player_passing,
-                    player_dribbling, player_defending, player_physicality, current_timestamp):
+            for name, rating, pace, shooting, passing, dribbling, defending, physicality, p_type in zip(
+                    player_names, player_ratings, player_pace, player_shooting, player_passing,
+                    player_dribbling, player_defending, player_physicality, player_types):
                 player_data.append({
                     'name': name,
                     'rating': rating,
-                    'price': price,
                     'pace': pace,
                     'shooting': shooting,
                     'passing': passing,
                     'dribbling': dribbling,
                     'defending': defending,
                     'physicality': physicality,
-                    'dttm_price': dttm  # Added timestamp column
+                    'player_type': p_type  # Added player type column
                 })
 
             df = pd.DataFrame(player_data)
@@ -142,48 +146,29 @@ async def scrape_page(url):
     else:
         return pd.DataFrame()
 
-
-# Function to upload the DataFrame to S3
+# Function to upload the DataFrame to S3 (unchanged)
 def upload_df_to_s3(dataframe, bucket_name, s3_folder):
-    """
-    Uploads a pandas DataFrame to an S3 bucket folder as a CSV file.
-
-    Parameters:
-    - dataframe: pandas DataFrame object to be uploaded
-    - bucket_name: the name of the S3 bucket
-    - s3_folder: the S3 folder path where the file will be stored
-    """
-    # Convert DataFrame to CSV in-memory
     csv_buffer = StringIO()
     dataframe.to_csv(csv_buffer, index=False)
-
-    # Create an S3 client and upload
-    # s3 = boto3.client('s3')
     s3.put_object(
         Bucket=bucket_name,
-        Key=f"{s3_folder}/futbin_players_prices_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
+        Key=f"{s3_folder}/futbin_players_type_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
         Body=csv_buffer.getvalue()
     )
 
-# Main function to scrape all URLs concurrently
+# Main function to scrape all URLs using a single browser instance
 async def main():
     urls = [
         'https://www.futbin.com/players?page=1&player_rating=83-83&sort=ps_price&order=asc',
-        'https://www.futbin.com/players?page=1&player_rating=84-84&sort=ps_price&order=asc',
-        'https://www.futbin.com/players?page=1&player_rating=85-85&sort=ps_price&order=asc',
-        'https://www.futbin.com/players?page=1&player_rating=86-86&sort=ps_price&order=asc',
-        'https://www.futbin.com/players?page=1&player_rating=87-87&sort=ps_price&order=asc',
-        'https://www.futbin.com/players?page=1&player_rating=88-88&sort=ps_price&order=asc',
-        'https://www.futbin.com/players?page=1&player_rating=89-89&sort=ps_price&order=asc',
-        'https://www.futbin.com/players?page=1&player_rating=90-90&sort=ps_price&order=asc',
-        'https://www.futbin.com/players?page=1&player_rating=91-91&sort=ps_price&order=asc'
+        'https://www.futbin.com/players?page=1&player_rating=84-84&sort=ps_price&order=asc'
     ]
 
     all_dataframes = []
 
-    # Scrape all pages concurrently
-    tasks = [scrape_page(url) for url in urls]
-    dataframes = await asyncio.gather(*tasks)
+    async with async_playwright() as playwright:
+        # Scrape all pages concurrently using the same browser instance
+        tasks = [scrape_page(playwright, url) for url in urls]
+        dataframes = await asyncio.gather(*tasks)
 
     # Append the results to the final DataFrame
     all_dataframes.extend(dataframes)
@@ -195,7 +180,6 @@ async def main():
     print(final_df.to_string())
 
     # Optionally, save the final DataFrame to a CSV file
-    # final_df.to_csv(f'/Users/alexwade/Documents/WADE_BOT/RAW/futbin_players_prices_{datetime.now()}.csv', index=False)
     upload_df_to_s3(final_df, 'wade-bot-scraper-dumps', 'Raw')
 
 # Run the main function
