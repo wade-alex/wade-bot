@@ -1,16 +1,7 @@
-## **USE**
-## Use this to automatically pull all CSV's from thr RAW s3
-## File and load into the price history table
-
-import os
+import boto3
 import pandas as pd
 import psycopg2
-import shutil
-import glob
-import boto3
 
-RAW_FOLDER = "/Users/alexwade/Documents/WADE_BOT/RAW/"
-PROCESSED_FOLDER = "/Users/alexwade/Documents/WADE_BOT/Processed/"
 S3_BUCKET = 'wade-bot-scraper-dumps'
 S3_RAW_FOLDER = 'Raw/'  # Folder in S3 where raw files are stored
 S3_PROCESSED_FOLDER = 'Processed/'  # Folder in S3 for processed files
@@ -22,38 +13,30 @@ s3 = boto3.client(
     aws_secret_access_key='Klv6xshqnXf5w5Hg8KHGcjtx7IdNSnuvUdOyxWnR'
 )
 
+
 def connect_db():
+    """Establishes and returns a connection to the PostgreSQL database."""
     conn = psycopg2.connect(
-        dbname="postgres",  # Database name from your JDBC URL
-        host="localhost",  # From your JDBC URL
-        port="5432"  # Default PostgreSQL port
+        dbname="postgres",
+        host="localhost",
+        port="5432"
     )
     return conn
 
+
 def transform_price(price_str):
-    """
-    Transforms price strings like '50K', '1.1M', '1.22M', '45.25K' into corresponding numeric values.
-    :param price_str: The price string to transform.
-    :return: The numeric value of the price.
-    """
-    # Ensure the string is uppercase to handle lowercase 'k' or 'm'
+    """Transforms price string (e.g., '50K', '1.1M') to numeric."""
     price_str = price_str.upper()
 
-    # Handle millions (M)
     if 'M' in price_str:
-        price_str = price_str.replace('M', '')
-        return float(price_str) * 1_000_000
-
-    # Handle thousands (K)
+        return float(price_str.replace('M', '')) * 1_000_000
     elif 'K' in price_str:
-        price_str = price_str.replace('K', '')
-        return float(price_str) * 1_000
+        return float(price_str.replace('K', '')) * 1_000
+    return float(price_str)
 
-    # Handle cases where it's a regular number
-    else:
-        return float(price_str)
 
 def insert_player_prices(cursor, player):
+    """Inserts player price data into the database."""
     p_oid = f"{player['name']}-{player['pace']}-{player['shooting']}-{player['passing']}-{player['dribbling']}-{player['defending']}-{player['physicality']}-{player['rating']}"
     sql = """
     INSERT INTO players.futbin_players_prices (
@@ -65,26 +48,37 @@ def insert_player_prices(cursor, player):
         player['passing'], player['dribbling'], player['defending'], player['physicality'], player['dttm_price']
     ))
 
-def process_file(file_path):
-    if os.stat(file_path).st_size == 0:
-        print(f"Skipping empty file: {file_path}")
-        return
 
+def process_s3_file(s3_key):
+    """Downloads and processes a file directly from S3 without saving locally."""
+    print(f"Processing file: {s3_key}...")
     try:
-        df = pd.read_csv(file_path)
+        # Retrieve the CSV file directly from S3
+        s3_obj = s3.get_object(Bucket=S3_BUCKET, Key=s3_key)
+        file_size = s3_obj['ContentLength']
+        print(f"File size: {file_size} bytes")
 
-        if df.empty:
-            print(f"No data in file: {file_path}")
+        # Check if the file is empty
+        if file_size == 0:
+            print(f"Skipping empty file: {s3_key}")
             return
 
-        # Transform the 'price' column using the transform_price function
+        # Process CSV content
+        df = pd.read_csv(s3_obj['Body'])
+        print(f"CSV file loaded. Number of records: {len(df)}")
+
+        if df.empty:
+            print(f"No data in file: {s3_key}")
+            return
+
+        # Transform the 'price' column
         if 'price' in df.columns:
             df['price'] = df['price'].apply(transform_price)
 
+        # Insert the data into the database
         conn = connect_db()
         cursor = conn.cursor()
 
-        # Iterate over the DataFrame rows and insert each player's price data
         for _, row in df.iterrows():
             insert_player_prices(cursor, row)
 
@@ -92,14 +86,47 @@ def process_file(file_path):
         cursor.close()
         conn.close()
 
-    except pd.errors.EmptyDataError as e:
-        print(f"Error reading file {file_path}: {e}")
-        return
+        print(f"Finished processing file: {s3_key}")
 
-def move_file(file_path, processed_folder):
-    shutil.move(file_path, processed_folder)
+    except Exception as e:
+        print(f"Error processing file {s3_key}: {e}")
+
+
+def move_file_to_processed(s3_key):
+    """Moves the processed file from 'Raw' to 'Processed' in the S3 bucket."""
+    file_name = s3_key.split('/')[-1]
+    processed_key = f"{S3_PROCESSED_FOLDER}{file_name}"
+
+    try:
+        # Copy the file from Raw to Processed
+        print(f"Copying {s3_key} to {processed_key}...")
+        s3.copy_object(
+            Bucket=S3_BUCKET,
+            CopySource={'Bucket': S3_BUCKET, 'Key': s3_key},
+            Key=processed_key
+        )
+        print(f"Copied {s3_key} to {processed_key}.")
+
+        # Delete the original file from Raw folder
+        delete_file_from_s3(file_name)
+
+    except Exception as e:
+        print(f"Error moving file {s3_key} to processed: {e}")
+
+
+def delete_file_from_s3(file_name):
+    """Deletes the specified file from the S3 'Raw' folder."""
+    try:
+        s3_key = f"{S3_RAW_FOLDER}{file_name}"
+        s3.delete_object(Bucket=S3_BUCKET, Key=s3_key)
+        print(f"Successfully deleted {s3_key} from S3 bucket.")
+    except Exception as e:
+        print(f"Error deleting file {s3_key} from S3: {e}")
+
 
 def download_files_from_s3():
+    """List and download all relevant files from the S3 Raw folder."""
+    print("Listing files from S3...")
     try:
         response = s3.list_objects_v2(Bucket=S3_BUCKET, Prefix=S3_RAW_FOLDER)
 
@@ -107,145 +134,23 @@ def download_files_from_s3():
             print(f"No files found in the folder '{S3_RAW_FOLDER}'")
             return []
 
-        file_paths = []
-
         for obj in response['Contents']:
             key = obj['Key']
-            # Only process files that start with 'futbin_player_prices' and end with '.csv'
             if key.startswith(f"{S3_RAW_FOLDER}futbin_players_prices") and key.endswith('.csv'):
-                file_name = key.split('/')[-1]
-                local_path = os.path.join(RAW_FOLDER, file_name)
+                print(f"Found file: {key}")
+                process_s3_file(key)
 
-                print(f"Downloading {file_name} from S3 bucket {S3_BUCKET}...")
-                s3.download_file(S3_BUCKET, key, local_path)
-                file_paths.append(local_path)
-
-        return file_paths
+                # Move the file to Processed after processing
+                move_file_to_processed(key)
 
     except Exception as e:
-        print(f"Error downloading files from S3: {str(e)}")
-        return []
+        print(f"Error downloading files from S3: {e}")
 
-
-def upload_processed_files_to_s3():
-    """
-    Uploads all files from the local 'Processed' folder to the 'Processed' folder in the S3 bucket.
-    """
-    try:
-        # Find all CSV files in the PROCESSED_FOLDER
-        files_to_upload = glob.glob(os.path.join(PROCESSED_FOLDER, "*.csv"))
-
-        if not files_to_upload:
-            print(f"No files found in the processed folder '{PROCESSED_FOLDER}'")
-            return
-
-        # Upload each file to the S3 bucket
-        for file_path in files_to_upload:
-            file_name = os.path.basename(file_path)  # Extract the file name
-            s3_key = os.path.join(S3_PROCESSED_FOLDER, file_name)  # S3 path for the processed file
-
-            print(f"Uploading {file_name} to S3 bucket {S3_BUCKET} in folder '{S3_PROCESSED_FOLDER}'...")
-
-            try:
-                # Perform the file upload
-                s3.upload_file(file_path, S3_BUCKET, s3_key)
-                print(f"Uploaded {file_name} successfully.")
-
-                # Optionally delete the local file after upload
-                # os.remove(file_path)
-                # print(f"Deleted local file: {file_path}")
-
-            except Exception as e:
-                print(f"Error uploading {file_name}: {str(e)}")
-
-    except Exception as e:
-        print(f"Error uploading files to S3: {str(e)}")
-
-
-def delete_file_from_s3(file_name, folder_type):
-    """
-    Deletes the specified file from the S3 folder (raw or processed).
-
-    :param file_name: The name of the file to delete.
-    :param folder_type: The folder type from which to delete the file ('raw' or 'processed').
-    """
-    # Define folder paths based on folder type
-    if folder_type == 'Raw':
-        s3_folder = 'Raw/'
-    elif folder_type == 'processed':
-        s3_folder = 'processed/'
-    else:
-        print(f"Invalid folder type specified: {folder_type}. Must be 'raw' or 'processed'.")
-        return
-
-    # Construct the full S3 key (path) for the file
-    s3_key = f"{s3_folder}{file_name}"  # Ensure correct S3 path formatting
-
-    try:
-        # Debug print to check if the correct key is being used
-        print(f"Attempting to delete file with S3 key: {s3_key} from bucket {S3_BUCKET}")
-
-        # Perform the deletion from S3
-        s3.delete_object(Bucket=S3_BUCKET, Key=s3_key)
-        print(f"Successfully deleted {s3_key} from S3 bucket {S3_BUCKET}.")
-    except Exception as e:
-        print(f"Error deleting file {s3_key} from S3: {str(e)}")
 
 def main():
-    # Step 1: Download all CSV files from the S3 bucket folder to RAW_FOLDER
-    files_to_process = download_files_from_s3()
+    # Download and process files directly from S3
+    download_files_from_s3()
 
-    # Check if any files were downloaded
-    if not files_to_process:
-        print("No files downloaded from S3. Exiting process.")
-        return
-
-    # Step 2: Process each file
-    for file_path in files_to_process:
-        print(f"Processing file: {file_path}")
-        process_file(file_path)
-
-        file_name = os.path.basename(file_path)
-
-        # Step 3: After processing, move the file to the PROCESSED_FOLDER
-        move_file(file_path, os.path.join(PROCESSED_FOLDER, file_name))
-        print(f"Moved file to: {PROCESSED_FOLDER}")
-
-    # Step 4: Upload processed files to S3
-    upload_processed_files_to_s3()
-
-    # Step 5: Delete the file from the S3 'Raw' folder, only if files were processed
-    if file_name:  # Ensure file_name is defined before trying to delete
-        delete_file_from_s3(file_name, 'Raw')
-    else:
-        print("No file was processed, skipping deletion from S3.")
-
-def main():
-    # Step 1: Download all CSV files from the S3 bucket folder to RAW_FOLDER
-    files_to_process = download_files_from_s3()
-
-    # Check if any files were downloaded
-    if not files_to_process:
-        print("No files downloaded from S3. Exiting process.")
-        return
-
-    # Step 2: Process each file
-    for file_path in files_to_process:
-        print(f"Processing file: {file_path}")
-        process_file(file_path)
-
-        file_name = os.path.basename(file_path)
-
-        # Step 3: After processing, move the file to the PROCESSED_FOLDER
-        move_file(file_path, os.path.join(PROCESSED_FOLDER, file_name))
-        print(f"Moved file to: {PROCESSED_FOLDER}")
-
-        # Step 4: Delete the file from the S3 'Raw' folder after processing
-        delete_file_from_s3(file_name, 'Raw')
-        print(f"Deleted file {file_name} from Raw folder in S3")
-
-    # Step 5: Upload processed files to S3 (optional, can be done after all files are processed)
-    upload_processed_files_to_s3()
 
 if __name__ == "__main__":
     main()
