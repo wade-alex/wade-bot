@@ -1,0 +1,5 @@
+## Grey-ish blue: 45, 58, 63 (light mode text color)
+## Light grey-ish blue: 182, 191, 193 (accent color main logo) #B6BFC1
+## Dark Blue: 36, 52, 60 (outline of large circles main logo) #24343C
+
+
