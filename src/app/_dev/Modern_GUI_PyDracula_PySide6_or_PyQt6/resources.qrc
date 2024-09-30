@@ -2,6 +2,9 @@
   <qresource prefix="images">
     <file>images/images/PyDracula.png</file>
     <file>images/images/PyDracula_vertical.png</file>
+    <file>images/images/cathedral_simple_transparent_DM.png</file>
+    <file>images/images/cathedral_simple_transparent_logo_DM.png</file>
+    <file>images/images/cathedral_simple_transparent_text_DM.png</file>
     <file>images/images/w-logo.png</file>
   </qresource>
   <qresource prefix="icons">

@@ -693,8 +693,8 @@ Button */
             <widget class="QLabel" name="label_2">
              <property name="geometry">
               <rect>
-               <x>5</x>
-               <y>7</y>
+               <x>4</x>
+               <y>6</y>
                <width>51</width>
                <height>41</height>
               </rect>
@@ -703,7 +703,7 @@ Button */
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap resource="resources.qrc">:/images/images/images/w-logo.png</pixmap>
+              <pixmap resource="resources.qrc">:/images/images/images/cathedral_simple_transparent_logo_DM.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
@@ -1555,33 +1555,92 @@ li.checked::marker { content: &quot;\2612&quot;; }
                  <number>0</number>
                 </property>
                 <item>
-                 <widget class="QLabel" name="titleRightInfo">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="maximumSize">
+                 <widget class="QWidget" name="widget" native="true">
+                  <property name="minimumSize">
                    <size>
-                    <width>16777215</width>
-                    <height>45</height>
+                    <width>54</width>
+                    <height>0</height>
                    </size>
                   </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>10</pointsize>
-                    <italic>false</italic>
-                    <bold>false</bold>
-                   </font>
+                  <property name="sizeIncrement">
+                   <size>
+                    <width>0</width>
+                    <height>0</height>
+                   </size>
                   </property>
-                  <property name="text">
-                   <string>Cathedral</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-                  </property>
+                  <widget class="QLabel" name="titleRightInfo">
+                   <property name="geometry">
+                    <rect>
+                     <x>0</x>
+                     <y>0</y>
+                     <width>871</width>
+                     <height>45</height>
+                    </rect>
+                   </property>
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>15</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>45</height>
+                    </size>
+                   </property>
+                   <property name="sizeIncrement">
+                    <size>
+                     <width>153</width>
+                     <height>2</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI</family>
+                     <pointsize>10</pointsize>
+                     <italic>false</italic>
+                     <bold>false</bold>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-image:(:/images/images/images/cathedral_simple_transparent_text_DM.png)</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>true</bool>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                   </property>
+                  </widget>
+                  <widget class="QLabel" name="label_3">
+                   <property name="geometry">
+                    <rect>
+                     <x>10</x>
+                     <y>10</y>
+                     <width>291</width>
+                     <height>31</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="pixmap">
+                    <pixmap resource="resources.qrc">:/images/images/images/cathedral_simple_transparent_text_DM.png</pixmap>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
                  </widget>
                 </item>
                </layout>
@@ -2703,43 +2762,66 @@ background-repeat: no-repeat;</string>
                       </layout>
                      </widget>
                      <widget class="QWidget" name="new_page">
-                      <layout class="QVBoxLayout" name="verticalLayout_20">
-                       <item>
-                        <widget class="QWebEngineView" name="test_chart" native="true">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>442</width>
-                           <height>454</height>
-                          </size>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">background: transparent;</string>
-                         </property>
-                         <widget class="QLabel" name="label">
-                          <property name="geometry">
-                           <rect>
-                            <x>-320</x>
-                            <y>390</y>
-                            <width>1154</width>
-                            <height>284</height>
-                           </rect>
-                          </property>
-                          <property name="text">
-                           <string>NEW PAGE TEST</string>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignmentFlag::AlignCenter</set>
-                          </property>
-                         </widget>
-                        </widget>
-                       </item>
-                      </layout>
+                      <widget class="QWebEngineView" name="test_chart" native="true">
+                       <property name="geometry">
+                        <rect>
+                         <x>12</x>
+                         <y>61</y>
+                         <width>442</width>
+                         <height>454</height>
+                        </rect>
+                       </property>
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>442</width>
+                         <height>454</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background: transparent;</string>
+                       </property>
+                       <widget class="QLabel" name="label">
+                        <property name="geometry">
+                         <rect>
+                          <x>-320</x>
+                          <y>390</y>
+                          <width>1154</width>
+                          <height>284</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>NEW PAGE TEST</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignmentFlag::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </widget>
+                      <widget class="QLabel" name="label_4">
+                       <property name="geometry">
+                        <rect>
+                         <x>580</x>
+                         <y>130</y>
+                         <width>291</width>
+                         <height>241</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="pixmap">
+                        <pixmap resource="resources.qrc">:/images/images/images/cathedral_simple_transparent_logo_DM.png</pixmap>
+                       </property>
+                       <property name="scaledContents">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
                      </widget>
                     </widget>
                    </item>
@@ -3019,7 +3101,7 @@ background-repeat: no-repeat;</string>
                    </font>
                   </property>
                   <property name="text">
-                   <string>By: Wanderson M. Pimenta</string>
+                   <string/>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
@@ -3029,7 +3111,7 @@ background-repeat: no-repeat;</string>
                 <item>
                  <widget class="QLabel" name="version">
                   <property name="text">
-                   <string>v1.0.3</string>
+                   <string>v1.0.0</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
