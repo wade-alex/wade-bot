@@ -27,7 +27,7 @@ config = [
     {
         'csv_file': 'reg_fodder_graph.csv',
         's3_folder': 'Display/',
-        'query': 'SELECT * FROM reporting.reg_fodder',
+        'query': "SELECT * FROM reporting.reg_fodder WHERE rounded_date >= (current_date - INTERVAL '14 days')",
         'table_name': 'players.reg_fodder'
     },
     # Add more configurations as needed

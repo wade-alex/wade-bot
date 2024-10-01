@@ -18,7 +18,30 @@ import sys
 import os
 import plotly.graph_objects as go
 import pandas as pd
+import boto3
+import pandas as pd
+import io
+from datetime import datetime, timedelta
 
+# Downloading data from S3 to use in charts
+# Initialize a session using Boto3
+s3 = boto3.client(
+    's3',
+    aws_access_key_id='AKIA5MSUBXIYQH6JNS4X',
+    aws_secret_access_key='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'
+)
+
+# Bucket and object information
+bucket_name = 'wade-bot-scraper-dumps'
+reg_fodder_graph_csv = 'Display/reg_fodder_graph.csv'
+
+# Download the file from S3
+response = s3.get_object(Bucket=bucket_name, Key=reg_fodder_graph_csv)
+
+# Read the data into a pandas DataFrame
+csv_data = response['Body'].read()
+reg_fodder_graph_df = pd.read_csv(io.BytesIO(csv_data))
+reg_fodder_graph_df = reg_fodder_graph_df.sort_values(by='rounded_date')
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
 from modules import *
@@ -108,15 +131,15 @@ class MainWindow(QMainWindow):
         widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
 
         # Load Chart in and display it
-        self.test_chart = self.ui.test_chart
-        self.display_plotly_chart()
+        self.gold_fodder_line_chart = self.ui.gold_fodder_line_chart
+        self.display_plotly_gold_fodder()
 
-        if self.test_chart is None:
-            print("Error: QWebEngineView 'test_chart' not found!")
+        if self.gold_fodder_line_chart is None:
+            print("Error: QWebEngineView 'gold_fodder_line_chart' not found!")
         else:
-            print("QWebEngineView 'test_chart' found successfully.")
+            print("QWebEngineView 'gold_fodder_line_chart' found successfully.")
             # Load the Plotly chart
-            self.display_plotly_chart()
+            self.display_plotly_gold_fodder()
 
     # BUTTONS CLICK
     # Post here your functions for clicked buttons
@@ -169,50 +192,70 @@ class MainWindow(QMainWindow):
         if event.buttons() == Qt.RightButton:
             print('Mouse click: RIGHT CLICK')
 
-    def display_plotly_chart(self):
-        # Create the Plotly chart with a time slider
-        time = pd.date_range("2023-01-01", periods=100, freq='D')
-        line1 = [i + 10 for i in range(100)]
-        line2 = [i + 20 for i in range(100)]
-        line3 = [i + 30 for i in range(100)]
+    def display_plotly_gold_fodder(self):
+        reg_fodder_graph_df['rounded_date'] = pd.to_datetime(reg_fodder_graph_df['rounded_date'])
+        # Step 2: Filter the data to show only the last 7 days by default
+        last_7_days = reg_fodder_graph_df['rounded_date'].max() - timedelta(days=7)
+        last_14_days = reg_fodder_graph_df['rounded_date'].max() - timedelta(days=14)
 
-        # Create the figure with three different lines
+        default_visible_ratings = [84, 85, 87, 88]
+        all_ratings = list(range(83, 92))  # Range from 83 to 91 inclusive
+        # Step 3: Create the Plotly chart with the time slider
         fig = go.Figure()
 
-        # Line 1
-        fig.add_trace(go.Scatter(x=time, y=line1, mode='lines', name="Line 1"))
-        # Line 2
-        fig.add_trace(go.Scatter(x=time, y=line2, mode='lines', name="Line 2"))
-        # Line 3
-        fig.add_trace(go.Scatter(x=time, y=line3, mode='lines', name="Line 3"))
+        # Define colors for the ratings (you can customize as needed)
+        colors = {
+            83: 'blue', 84: 'green', 85: 'red', 86: 'purple',
+            87: 'orange', 88: 'pink', 89: 'yellow', 90: 'cyan', 91: 'gray'
+        }
 
-        # Add time slider
+        # Adding a trace for each rating, showing specific ratings by default
+        for rating in all_ratings:
+            rating_df = reg_fodder_graph_df[reg_fodder_graph_df['rating'] == rating]
+
+            # Check if this rating should be visible by default
+            visible = True if rating in default_visible_ratings else 'legendonly'
+
+            fig.add_trace(go.Scatter(
+                x=rating_df['rounded_date'],
+                y=rating_df['index'],
+                mode='lines',
+                name=f"Rating {rating}",
+                line=dict(color=colors.get(rating, 'gray')),  # Default to gray if no color defined
+                visible=visible
+            ))
+
+        # Step 4: Customize layout
         fig.update_layout(
-            title="Test Chart with Time Slider",
-            title_font=dict(color='white'),  # Set title font color to white
+            title="Fodder Price Index with Time Slider",
+            title_font=dict(color='white'),
             xaxis=dict(
                 rangeselector=dict(
                     buttons=[
-                        dict(count=1, label="1m", step="month", stepmode="backward"),
-                        dict(count=6, label="6m", step="month", stepmode="backward"),
-                        dict(step="all")
-                    ]
+                        dict(count=1, label="1d", step="day", stepmode="backward"),
+                        dict(count=7, label="7d", step="day", stepmode="backward"),
+                        dict(count=14, label="14d", step="day", stepmode="backward"),
+                        dict(count=30, label="30d", step="day", stepmode="backward"),
+                        dict(step="all", label="All")
+                    ],
+                    font=dict(color='black')  # Set button text color to black
                 ),
                 rangeslider=dict(visible=True),
+                range=[last_7_days, reg_fodder_graph_df['rounded_date'].max()],  # Set default range to last 7 days
                 type="date",
-                tickfont=dict(color='white'),  # Set x-axis tick labels to white
-                title=dict(text="Time", font=dict(color='white'))  # Set x-axis title to white
+                tickfont=dict(color='white'),
+                title=dict(text="Time", font=dict(color='white'))
             ),
             yaxis=dict(
-                tickfont=dict(color='white'),  # Set y-axis tick labels to white
-                title=dict(text="Values", font=dict(color='white'))  # Set y-axis title to white
+                range=[80, 120],  # Limit y-axis from 80 to 120
+                tickfont=dict(color='white'),
+                title=dict(text="Price Index", font=dict(color='white'))
             ),
-            font=dict(color='white'),  # Set the default font color to white for all elements
-            legend=dict(font=dict(color='white')),  # Set legend font color to white
-            paper_bgcolor='rgba(0,0,0,0)'  # Outer area (paper) background transparent
-            # plot_bgcolor='rgba(0,0,0,0)'  # Inner plot area background transparent
+            font=dict(color='white'),
+            legend=dict(font=dict(color='white')),  # Legend for ratings
+            paper_bgcolor='rgba(0,0,0,0)',  # Outer area (paper) background transparent
+            plot_bgcolor='rgba(0,0,0,0)'  # Inner plot area background transparent
         )
-
         # Generate HTML content from the figure
         html_content = fig.to_html(include_plotlyjs='cdn')
 
@@ -242,17 +285,17 @@ class MainWindow(QMainWindow):
         """
 
         # Load the HTML content into the QWebEngineView widget
-        if self.test_chart is not None:
+        if self.gold_fodder_line_chart is not None:
             # Enable transparency in the QWebEngineView widget
-            self.test_chart.setAttribute(Qt.WA_TranslucentBackground, True)
-            self.test_chart.setStyleSheet("background: transparent;")
-            self.test_chart.page().setBackgroundColor(Qt.transparent)
+            self.gold_fodder_line_chart.setAttribute(Qt.WA_TranslucentBackground, True)
+            self.gold_fodder_line_chart.setStyleSheet("background: transparent;")
+            self.gold_fodder_line_chart.page().setBackgroundColor(Qt.transparent)
 
             # Load the transparent HTML content
-            self.test_chart.setHtml(transparent_html)
-            self.test_chart.update()  # Forces a repaint to ensure the view is refreshed
+            self.gold_fodder_line_chart.setHtml(transparent_html)
+            self.gold_fodder_line_chart.update()  # Forces a repaint to ensure the view is refreshed
         else:
-            print("Error: QWebEngineView 'test_chart' not found!")
+            print("Error: QWebEngineView 'gold_fodder_line_chart' not found!")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
