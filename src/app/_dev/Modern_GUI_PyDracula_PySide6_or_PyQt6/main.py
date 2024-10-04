@@ -22,13 +22,48 @@ import boto3
 import pandas as pd
 import io
 from datetime import datetime, timedelta
+from botocore.exceptions import ClientError
+import json
+import csv
+from PySide6.QtWidgets import QTableWidgetItem
+import subprocess
 
-# Downloading data from S3 to use in charts
-# Initialize a session using Boto3
+# Function to get AWS credentials from Secrets Manager
+def get_secret():
+    secret_name = "wade-bot-s3"  # Your secret name
+    region_name = "us-east-2"  # Your AWS region
+
+    # Create a Secrets Manager client
+    session = boto3.session.Session()
+    client = session.client(
+        service_name='secretsmanager',
+        region_name=region_name
+    )
+
+    try:
+        # Retrieve the secret value
+        get_secret_value_response = client.get_secret_value(SecretId=secret_name)
+
+        # Parse the secret string and return it as a dictionary
+        secret = get_secret_value_response['SecretString']
+        return json.loads(secret)
+
+    except ClientError as e:
+        print(f"Error retrieving secret: {e}")
+        raise e
+
+
+# Retrieve the secrets from AWS Secrets Manager
+secrets = get_secret()
+aws_access_key_id = secrets['aws_access_key_id']
+aws_secret_access_key = secrets['aws_secret_access_key']
+
+# Initialize the S3 client using the credentials from Secrets Manager
 s3 = boto3.client(
     's3',
-    aws_access_key_id='AKIA5MSUBXIYQH6JNS4X',
-    aws_secret_access_key='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'
+    aws_access_key_id=aws_access_key_id,
+    aws_secret_access_key=aws_secret_access_key,
+    region_name="us-east-2"  # Ensure the region matches your S3 bucket
 )
 
 # Bucket and object information
@@ -42,6 +77,9 @@ response = s3.get_object(Bucket=bucket_name, Key=reg_fodder_graph_csv)
 csv_data = response['Body'].read()
 reg_fodder_graph_df = pd.read_csv(io.BytesIO(csv_data))
 reg_fodder_graph_df = reg_fodder_graph_df.sort_values(by='rounded_date')
+
+
+
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
 from modules import *
@@ -55,6 +93,8 @@ widgets = None
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
+
+        self.run_pre_boot()
 
         # Initialize UI components from Ui_MainWindow
         self.ui = Ui_MainWindow()
@@ -141,6 +181,8 @@ class MainWindow(QMainWindow):
             # Load the Plotly chart
             self.display_plotly_gold_fodder()
 
+        self.gold_fodder_table_load()
+
     # BUTTONS CLICK
     # Post here your functions for clicked buttons
     # ///////////////////////////////////////////////////////////////
@@ -193,14 +235,19 @@ class MainWindow(QMainWindow):
             print('Mouse click: RIGHT CLICK')
 
     def display_plotly_gold_fodder(self):
+        # Variable to control the number of days to show initially
+        show_x_days = 1  # Change this value to adjust the initial view
+
         reg_fodder_graph_df['rounded_date'] = pd.to_datetime(reg_fodder_graph_df['rounded_date'])
-        # Step 2: Filter the data to show only the last 7 days by default
-        last_7_days = reg_fodder_graph_df['rounded_date'].max() - timedelta(days=7)
-        last_14_days = reg_fodder_graph_df['rounded_date'].max() - timedelta(days=14)
+
+        # Calculate the date range
+        last_day = reg_fodder_graph_df['rounded_date'].max()
+        start_day = last_day - timedelta(days=show_x_days)
 
         default_visible_ratings = [84, 85, 87, 88]
         all_ratings = list(range(83, 92))  # Range from 83 to 91 inclusive
-        # Step 3: Create the Plotly chart with the time slider
+
+        # Create the Plotly chart with the time slider
         fig = go.Figure()
 
         # Define colors for the ratings (you can customize as needed)
@@ -225,7 +272,7 @@ class MainWindow(QMainWindow):
                 visible=visible
             ))
 
-        # Step 4: Customize layout
+        # Customize layout
         fig.update_layout(
             title="Fodder Price Index with Time Slider",
             title_font=dict(color='white'),
@@ -241,7 +288,7 @@ class MainWindow(QMainWindow):
                     font=dict(color='black')  # Set button text color to black
                 ),
                 rangeslider=dict(visible=True),
-                range=[last_7_days, reg_fodder_graph_df['rounded_date'].max()],  # Set default range to last 7 days
+                range=[start_day, last_day],  # Set default range based on show_x_days
                 type="date",
                 tickfont=dict(color='white'),
                 title=dict(text="Time", font=dict(color='white'))
@@ -296,6 +343,103 @@ class MainWindow(QMainWindow):
             self.gold_fodder_line_chart.update()  # Forces a repaint to ensure the view is refreshed
         else:
             print("Error: QWebEngineView 'gold_fodder_line_chart' not found!")
+
+    def gold_fodder_table_load(self):
+        # S3 bucket and file information
+        bucket_name = 'wade-bot-scraper-dumps'
+        file_key = 'Display/reg_fodder_table.csv'
+
+        try:
+            # Download the CSV file from S3
+            response = s3.get_object(Bucket=bucket_name, Key=file_key)
+            csv_content = response['Body'].read().decode('utf-8')
+
+            # Parse CSV content
+            csv_data = csv.reader(io.StringIO(csv_content))
+            original_headers = next(csv_data)  # Get the original headers
+
+            # Define custom headers (modify these as needed)
+            custom_headers = [
+                "Rating",
+                "1 Day",
+                "3 Days",
+                "7 Days",
+                "7-14 Days"
+            ]
+
+            # Ensure we have the correct number of custom headers
+            if len(custom_headers) != len(original_headers):
+                print("Warning: Number of custom headers doesn't match CSV headers.")
+                custom_headers = original_headers  # Fallback to original headers
+
+            # Set up the table
+            self.ui.golder_fodder_table.setColumnCount(len(custom_headers))
+            self.ui.golder_fodder_table.setHorizontalHeaderLabels(custom_headers)
+
+            # Hide the vertical header (row numbers)
+            self.ui.golder_fodder_table.verticalHeader().setVisible(False)
+
+            # Populate the table
+            for row, row_data in enumerate(csv_data):
+                self.ui.golder_fodder_table.insertRow(row)
+                for col, cell_data in enumerate(row_data):
+                    if col == 0:  # Rating column
+                        item = QTableWidgetItem(cell_data)
+                    else:  # Other columns
+                        try:
+                            # Convert to float, round to 0 decimal places, format with commas
+                            formatted_value = "{:,}".format(round(float(cell_data)))
+                            item = QTableWidgetItem(formatted_value)
+                        except ValueError:
+                            # If conversion fails, use the original value
+                            item = QTableWidgetItem(cell_data)
+                    self.ui.golder_fodder_table.setItem(row, col, item)
+
+            # Resize columns to content
+            self.ui.golder_fodder_table.resizeColumnsToContents()
+
+            print("Gold fodder table loaded successfully.")
+        except Exception as e:
+            print(f"Error loading gold fodder table: {str(e)}")
+
+    def run_pre_boot(self):
+        try:
+            # Get the directory of the current script
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+
+            # Navigate to the project root (assuming the current file is in src/app/_dev/Modern_GUI_PyDracula_PySide6_or_PyQt6/)
+            project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(current_dir))))
+
+            # Construct the path to pre_boot.py
+            pre_boot_path = os.path.join(project_root, "src", "app", "__scripts", "pre_boot.py")
+
+            print(f"Attempting to run pre_boot.py from: {pre_boot_path}")
+
+            # Check if the file exists
+            if not os.path.exists(pre_boot_path):
+                raise FileNotFoundError(f"pre_boot.py not found at {pre_boot_path}")
+
+            # Use the same Python interpreter that's running the current script
+            python_executable = sys.executable
+
+            # Run pre_boot.py
+            result = subprocess.run([python_executable, pre_boot_path], check=True, capture_output=True, text=True)
+            print("Successfully executed pre_boot.py")
+            print("Output:", result.stdout)
+        except subprocess.CalledProcessError as e:
+            print(f"Error executing pre_boot.py: {e}")
+            print("Standard Output:", e.stdout)
+            print("Standard Error:", e.stderr)
+        except FileNotFoundError as e:
+            print(e)
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+
+        # Print current working directory and its contents for debugging
+        print(f"Current working directory: {os.getcwd()}")
+        print("Contents of current directory:")
+        for item in os.listdir(os.getcwd()):
+            print(item)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

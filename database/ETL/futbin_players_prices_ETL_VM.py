@@ -1,16 +1,49 @@
 import boto3
 import pandas as pd
 import psycopg2
+from botocore.exceptions import ClientError
+import json
 
 S3_BUCKET = 'wade-bot-scraper-dumps'
 S3_RAW_FOLDER = 'Raw/'  # Folder in S3 where raw files are stored
 S3_PROCESSED_FOLDER = 'Processed/'  # Folder in S3 for processed files
 
-# Initialize the S3 client
+# Function to get AWS credentials from Secrets Manager
+def get_secret():
+    secret_name = "wade-bot-s3"  # Your secret name
+    region_name = "us-east-2"  # Your AWS region
+
+    # Create a Secrets Manager client
+    session = boto3.session.Session()
+    client = session.client(
+        service_name='secretsmanager',
+        region_name=region_name
+    )
+
+    try:
+        # Retrieve the secret value
+        get_secret_value_response = client.get_secret_value(SecretId=secret_name)
+
+        # Parse the secret string and return it as a dictionary
+        secret = get_secret_value_response['SecretString']
+        return json.loads(secret)
+
+    except ClientError as e:
+        print(f"Error retrieving secret: {e}")
+        raise e
+
+
+# Retrieve the secrets from AWS Secrets Manager
+secrets = get_secret()
+aws_access_key_id = secrets['aws_access_key_id']
+aws_secret_access_key = secrets['aws_secret_access_key']
+
+# Initialize the S3 client using the credentials from Secrets Manager
 s3 = boto3.client(
     's3',
-    aws_access_key_id='AKIA5MSUBXIYQH6JNS4X',
-    aws_secret_access_key='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'
+    aws_access_key_id=aws_access_key_id,
+    aws_secret_access_key=aws_secret_access_key,
+    region_name="us-east-2"  # Ensure the region matches your S3 bucket
 )
 
 

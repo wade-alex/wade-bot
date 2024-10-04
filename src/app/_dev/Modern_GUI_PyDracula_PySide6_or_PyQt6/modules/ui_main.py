@@ -23,7 +23,7 @@ from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplicat
     QScrollArea, QScrollBar, QSizePolicy, QSlider,
     QStackedWidget, QTableWidget, QTableWidgetItem, QTextEdit,
     QVBoxLayout, QWidget)
-from . resources_rc import *
+from . import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -1407,7 +1407,7 @@ class Ui_MainWindow(object):
         self.new_page.setObjectName(u"new_page")
         self.gold_fodder_line_chart = QWebEngineView(self.new_page)
         self.gold_fodder_line_chart.setObjectName(u"gold_fodder_line_chart")
-        self.gold_fodder_line_chart.setGeometry(QRect(12, 61, 442, 454))
+        self.gold_fodder_line_chart.setGeometry(QRect(12, 14, 531, 551))
         sizePolicy2.setHeightForWidth(self.gold_fodder_line_chart.sizePolicy().hasHeightForWidth())
         self.gold_fodder_line_chart.setSizePolicy(sizePolicy2)
         self.gold_fodder_line_chart.setMinimumSize(QSize(442, 454))
@@ -1416,11 +1416,21 @@ class Ui_MainWindow(object):
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(-320, 390, 1154, 284))
         self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.label_4 = QLabel(self.new_page)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setGeometry(QRect(580, 130, 291, 241))
-        self.label_4.setPixmap(QPixmap(u":/images/images/images/cathedral_simple_transparent_logo_DM.png"))
-        self.label_4.setScaledContents(True)
+        self.golder_fodder_table = QTableWidget(self.new_page)
+        if (self.golder_fodder_table.columnCount() < 5):
+            self.golder_fodder_table.setColumnCount(5)
+        __qtablewidgetitem24 = QTableWidgetItem()
+        self.golder_fodder_table.setHorizontalHeaderItem(0, __qtablewidgetitem24)
+        __qtablewidgetitem25 = QTableWidgetItem()
+        self.golder_fodder_table.setHorizontalHeaderItem(1, __qtablewidgetitem25)
+        __qtablewidgetitem26 = QTableWidgetItem()
+        self.golder_fodder_table.setHorizontalHeaderItem(2, __qtablewidgetitem26)
+        __qtablewidgetitem27 = QTableWidgetItem()
+        self.golder_fodder_table.setHorizontalHeaderItem(3, __qtablewidgetitem27)
+        __qtablewidgetitem28 = QTableWidgetItem()
+        self.golder_fodder_table.setHorizontalHeaderItem(4, __qtablewidgetitem28)
+        self.golder_fodder_table.setObjectName(u"golder_fodder_table")
+        self.golder_fodder_table.setGeometry(QRect(555, 1, 421, 521))
         self.stackedWidget.addWidget(self.new_page)
 
         self.verticalLayout_15.addWidget(self.stackedWidget)
@@ -1691,7 +1701,16 @@ class Ui_MainWindow(object):
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
         self.label.setText(QCoreApplication.translate("MainWindow", u"NEW PAGE TEST", None))
-        self.label_4.setText("")
+        ___qtablewidgetitem24 = self.golder_fodder_table.horizontalHeaderItem(0)
+        ___qtablewidgetitem24.setText(QCoreApplication.translate("MainWindow", u"Rating", None));
+        ___qtablewidgetitem25 = self.golder_fodder_table.horizontalHeaderItem(1)
+        ___qtablewidgetitem25.setText(QCoreApplication.translate("MainWindow", u"1 day", None));
+        ___qtablewidgetitem26 = self.golder_fodder_table.horizontalHeaderItem(2)
+        ___qtablewidgetitem26.setText(QCoreApplication.translate("MainWindow", u"3 days", None));
+        ___qtablewidgetitem27 = self.golder_fodder_table.horizontalHeaderItem(3)
+        ___qtablewidgetitem27.setText(QCoreApplication.translate("MainWindow", u"7 days", None));
+        ___qtablewidgetitem28 = self.golder_fodder_table.horizontalHeaderItem(4)
+        ___qtablewidgetitem28.setText(QCoreApplication.translate("MainWindow", u"7-14 Days", None));
         self.btn_message.setText(QCoreApplication.translate("MainWindow", u"Message", None))
         self.btn_print.setText(QCoreApplication.translate("MainWindow", u"Print", None))
         self.btn_logout.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
