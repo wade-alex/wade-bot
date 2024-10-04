@@ -1626,7 +1626,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                    <property name="geometry">
                     <rect>
                      <x>10</x>
-                     <y>10</y>
+                     <y>8</y>
                      <width>291</width>
                      <height>31</height>
                     </rect>
@@ -2762,13 +2762,13 @@ background-repeat: no-repeat;</string>
                       </layout>
                      </widget>
                      <widget class="QWidget" name="new_page">
-                      <widget class="QWebEngineView" name="test_chart" native="true">
+                      <widget class="QWebEngineView" name="gold_fodder_line_chart" native="true">
                        <property name="geometry">
                         <rect>
                          <x>12</x>
-                         <y>61</y>
-                         <width>442</width>
-                         <height>454</height>
+                         <y>14</y>
+                         <width>531</width>
+                         <height>551</height>
                         </rect>
                        </property>
                        <property name="sizePolicy">
@@ -2803,24 +2803,40 @@ background-repeat: no-repeat;</string>
                         </property>
                        </widget>
                       </widget>
-                      <widget class="QLabel" name="label_4">
+                      <widget class="QTableWidget" name="golder_fodder_table">
                        <property name="geometry">
                         <rect>
-                         <x>580</x>
-                         <y>130</y>
-                         <width>291</width>
-                         <height>241</height>
+                         <x>555</x>
+                         <y>1</y>
+                         <width>421</width>
+                         <height>521</height>
                         </rect>
                        </property>
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="pixmap">
-                        <pixmap resource="resources.qrc">:/images/images/images/cathedral_simple_transparent_logo_DM.png</pixmap>
-                       </property>
-                       <property name="scaledContents">
-                        <bool>true</bool>
-                       </property>
+                       <column>
+                        <property name="text">
+                         <string>Rating</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>1 day</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>3 days</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>7 days</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>7-14 Days</string>
+                        </property>
+                       </column>
                       </widget>
                      </widget>
                     </widget>
