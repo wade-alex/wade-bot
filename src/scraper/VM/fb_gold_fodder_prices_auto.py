@@ -8,11 +8,45 @@ from datetime import datetime
 import nest_asyncio
 import boto3
 from io import StringIO
+from botocore.exceptions import ClientError
+import json
 
+# Function to get AWS credentials from Secrets Manager
+def get_secret():
+    secret_name = "wade-bot-s3"  # Your secret name
+    region_name = "us-east-2"  # Your AWS region
+
+    # Create a Secrets Manager client
+    session = boto3.session.Session()
+    client = session.client(
+        service_name='secretsmanager',
+        region_name=region_name
+    )
+
+    try:
+        # Retrieve the secret value
+        get_secret_value_response = client.get_secret_value(SecretId=secret_name)
+
+        # Parse the secret string and return it as a dictionary
+        secret = get_secret_value_response['SecretString']
+        return json.loads(secret)
+
+    except ClientError as e:
+        print(f"Error retrieving secret: {e}")
+        raise e
+
+
+# Retrieve the secrets from AWS Secrets Manager
+secrets = get_secret()
+aws_access_key_id = secrets['aws_access_key_id']
+aws_secret_access_key = secrets['aws_secret_access_key']
+
+# Initialize the S3 client using the credentials from Secrets Manager
 s3 = boto3.client(
     's3',
-    aws_access_key_id='AKIA5MSUBXIYQH6JNS4X',
-    aws_secret_access_key='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'
+    aws_access_key_id=aws_access_key_id,
+    aws_secret_access_key=aws_secret_access_key,
+    region_name="us-east-2"  # Ensure the region matches your S3 bucket
 )
 
 # Apply nest_asyncio for environments like Jupyter

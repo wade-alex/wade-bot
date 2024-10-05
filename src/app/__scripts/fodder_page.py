@@ -92,11 +92,11 @@ def check_file_last_modified(bucket, file_path):
         return None
 
 def refresh_required(last_modified):
-    """Check if the last refresh was more than 3 hours ago."""
+    """Check if the last refresh was more than 1 hour ago."""
     if last_modified:
         time_diff = datetime.now(last_modified.tzinfo) - last_modified
-        if time_diff < timedelta(hours=3):
-            logging.info("File was refreshed within the last 3 hours. No refresh needed.")
+        if time_diff < timedelta(hours=1):
+            logging.info("File was refreshed within the last 1 hour. No refresh needed.")
             return False
     return True
 

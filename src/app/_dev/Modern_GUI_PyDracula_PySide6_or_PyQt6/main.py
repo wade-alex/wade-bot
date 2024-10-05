@@ -27,6 +27,8 @@ import json
 import csv
 from PySide6.QtWidgets import QTableWidgetItem
 import subprocess
+import warnings
+warnings.filterwarnings("ignore")
 
 # Function to get AWS credentials from Secrets Manager
 def get_secret():
@@ -434,12 +436,6 @@ class MainWindow(QMainWindow):
             print(e)
         except Exception as e:
             print(f"Unexpected error: {e}")
-
-        # Print current working directory and its contents for debugging
-        print(f"Current working directory: {os.getcwd()}")
-        print("Contents of current directory:")
-        for item in os.listdir(os.getcwd()):
-            print(item)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
