@@ -1,6 +1,5 @@
 import asyncio
 from pyppeteer import launch
-import re
 import pandas as pd
 from datetime import datetime
 import nest_asyncio
@@ -8,13 +7,13 @@ import boto3
 from io import StringIO
 from botocore.exceptions import ClientError
 import json
-import os
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 
 # S3 Configuration
 S3_BUCKET = 'wade-bot-scraper-dumps'
 S3_FOLDER = 'Raw'
+S3_SBC_FOLDER = 'SBC'
 
 # Function to get AWS credentials from Secrets Manager
 def get_secret():
@@ -160,6 +159,27 @@ def upload_df_to_s3(dataframe, bucket_name, s3_folder):
     )
 
 
+def upload_consolidated_sbc_data(dataframe):
+    """
+    Uploads the consolidated SBC data to the SBC folder in S3.
+    """
+    print("Uploading consolidated SBC data...")
+    try:
+        # Convert DataFrame to CSV in-memory
+        csv_buffer = StringIO()
+        dataframe.to_csv(csv_buffer, index=False)
+
+        # Create an S3 client and upload
+        s3.put_object(
+            Bucket=S3_BUCKET,
+            Key=f"{S3_SBC_FOLDER}/sbc_links.csv",
+            Body=csv_buffer.getvalue()
+        )
+        print(f"Successfully uploaded consolidated SBC data to {S3_SBC_FOLDER}/sbc_links.csv")
+    except Exception as e:
+        print(f"Error uploading consolidated SBC data: {e}")
+
+
 async def main():
     urls = [
         "https://www.fut.gg/sbc/players/",
@@ -179,9 +199,11 @@ async def main():
     # Print the final DataFrame
     print(final_df.to_string(index=False))
 
-    # Upload the DataFrame to S3
+    # Upload the DataFrame to S3 (Raw folder)
     upload_df_to_s3(final_df, S3_BUCKET, S3_FOLDER)
 
+    # Upload the consolidated data to the SBC folder
+    upload_consolidated_sbc_data(final_df)
 
 # Run the main function
 asyncio.get_event_loop().run_until_complete(main())

@@ -52,6 +52,7 @@ def main():
     # Define the files to be executed in order with relative paths
     files = [
         os.path.join(project_root, "database", "ETL", "futbin_players_prices_ETL_VM.py"),
+        os.path.join(project_root, "database", "ETL", "fut_gg_sbc_ETL_VM.py"),
         os.path.join(project_root, "database", "SQL", "reporting.reg_fodder.sql"),
         os.path.join(project_root, "database", "SQL", "reporting.reg_fodder_table.sql"),
         os.path.join(project_root, "src", "app", "__scripts", "fodder_page.py")
