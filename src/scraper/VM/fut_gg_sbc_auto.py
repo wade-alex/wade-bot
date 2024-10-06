@@ -58,7 +58,9 @@ nest_asyncio.apply()
 # List of URLs to scrape
 urls = [
     "https://www.fut.gg/sbc/players/",
-    "https://www.fut.gg/sbc/upgrades/"
+    "https://www.fut.gg/sbc/upgrades/",
+   "https://www.fut.gg/sbc/challenges/",
+    "https://www.fut.gg/sbc/foundations/"
 ]
 
 
