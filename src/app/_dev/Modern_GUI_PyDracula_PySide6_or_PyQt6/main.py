@@ -17,7 +17,6 @@
 import sys
 import os
 import plotly.graph_objects as go
-import pandas as pd
 import boto3
 import pandas as pd
 import io
@@ -80,7 +79,40 @@ csv_data = response['Body'].read()
 reg_fodder_graph_df = pd.read_csv(io.BytesIO(csv_data))
 reg_fodder_graph_df = reg_fodder_graph_df.sort_values(by='rounded_date')
 
+def run_pre_boot():
+    try:
+        # Get the directory of the current script
+        current_dir = os.path.dirname(os.path.abspath(__file__))
 
+        # Navigate to the project root (assuming the current file is in src/app/_dev/Modern_GUI_PyDracula_PySide6_or_PyQt6/)
+        project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(current_dir))))
+
+        # Construct the path to pre_boot.py
+        pre_boot_path = os.path.join(project_root, "src", "app", "__scripts", "pre_boot.py")
+
+        print(f"Attempting to run pre_boot.py from: {pre_boot_path}")
+
+        # Check if the file exists
+        if not os.path.exists(pre_boot_path):
+            raise FileNotFoundError(f"pre_boot.py not found at {pre_boot_path}")
+
+        # Use the same Python interpreter that's running the current script
+        python_executable = sys.executable
+
+        # Run pre_boot.py
+        result = subprocess.run([python_executable, pre_boot_path], check=True, capture_output=True, text=True)
+        print("Successfully executed pre_boot.py")
+        print("Output:", result.stdout)
+    except subprocess.CalledProcessError as e:
+        print(f"Error executing pre_boot.py: {e}")
+        print("Standard Output:", e.stdout)
+        print("Standard Error:", e.stderr)
+    except FileNotFoundError as e:
+        print(e)
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+
+run_pre_boot()
 
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
@@ -95,8 +127,6 @@ widgets = None
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
-
-        self.run_pre_boot()
 
         # Initialize UI components from Ui_MainWindow
         self.ui = Ui_MainWindow()
@@ -404,40 +434,9 @@ class MainWindow(QMainWindow):
         except Exception as e:
             print(f"Error loading gold fodder table: {str(e)}")
 
-    def run_pre_boot(self):
-        try:
-            # Get the directory of the current script
-            current_dir = os.path.dirname(os.path.abspath(__file__))
-
-            # Navigate to the project root (assuming the current file is in src/app/_dev/Modern_GUI_PyDracula_PySide6_or_PyQt6/)
-            project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(current_dir))))
-
-            # Construct the path to pre_boot.py
-            pre_boot_path = os.path.join(project_root, "src", "app", "__scripts", "pre_boot.py")
-
-            print(f"Attempting to run pre_boot.py from: {pre_boot_path}")
-
-            # Check if the file exists
-            if not os.path.exists(pre_boot_path):
-                raise FileNotFoundError(f"pre_boot.py not found at {pre_boot_path}")
-
-            # Use the same Python interpreter that's running the current script
-            python_executable = sys.executable
-
-            # Run pre_boot.py
-            result = subprocess.run([python_executable, pre_boot_path], check=True, capture_output=True, text=True)
-            print("Successfully executed pre_boot.py")
-            print("Output:", result.stdout)
-        except subprocess.CalledProcessError as e:
-            print(f"Error executing pre_boot.py: {e}")
-            print("Standard Output:", e.stdout)
-            print("Standard Error:", e.stderr)
-        except FileNotFoundError as e:
-            print(e)
-        except Exception as e:
-            print(f"Unexpected error: {e}")
-
 if __name__ == "__main__":
+    # run_pre_boot()
+
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon("w-logo.png"))
     window = MainWindow()

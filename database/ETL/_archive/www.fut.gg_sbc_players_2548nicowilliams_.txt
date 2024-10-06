@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en" class>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Nico Williams SBC -  FUT.GG</title>
+<meta name="description" content="Earn a UEFA Europa League Road To The Knockouts, Nico Williams. Find the cheapest solutions possible for each challenge using our AI generated solutions." />
+<meta name="keywords" content="FIFA, FUT, FIFA Ultimate Team, EAFC, EA FC, EA SPORTS FC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="https://www.fut.gg/sbc/players/25-48-nico-williams/" rel="canonical" />
+<link rel="icon" href="https://assets.fut.gg/frontend/site-images/site/favicon.png" type="image/x-icon" />
+<link rel="shortcut icon" href="https://assets.fut.gg/frontend/site-images/site/favicon.png" type="image/x-icon" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to FUT.GG News" href="#" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Nico Williams SBC -  FUT.GG" />
+<meta property="og:url" content="http://www.fut.gg/sbc/players/25-48-nico-williams/" />
+<meta property="og:description" content="Earn a UEFA Europa League Road To The Knockouts, Nico Williams. Find the cheapest solutions possible for each challenge using our AI generated solutions." />
+<meta property="og:site_name" content="FUT.GG" />
+<meta property="og:image" content="https://assets.fut.gg/frontend/site-images/site/fut-social.jpg" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:url" content="https://www.fut.gg/sbc/players/25-48-nico-williams/" />
+<meta name="twitter:domain" content="fut.gg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://assets.fut.gg/frontend/site-images/site/fut-social.jpg" />
+<meta name="twitter:title" content="Nico Williams SBC -  FUT.GG" />
+<meta name="twitter:description" content="Earn a UEFA Europa League Road To The Knockouts, Nico Williams. Find the cheapest solutions possible for each challenge using our AI generated solutions." />
+<meta name="twitter:site" content="@FUTxGG" />
+<meta name="twitter:creator" content="@FUTxGG" />
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://www.google-analytics.com">
+<link rel="apple-touch-icon" href="https://assets.fut.gg/frontend/site-images/site/apple-touch-icon.png" />
+<link rel="stylesheet" href="https://assets.fut.gg/frontend/assets/vendor-BDKkN7NQ.css" />
+<script type="module" crossorigin src="https://assets.fut.gg/frontend/assets/apps-CjWf9fys.js"></script>
+<link href="https://assets.fut.gg/frontend/assets/vendor-CamT3TDX.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="https://assets.fut.gg/frontend/assets/mainCss-U_Y3lArd.css" rel="stylesheet" crossorigin="anonymous" />
+<script type="application/ld+json">
+            {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SBC", "item": "http://www.fut.gg/sbc/"}, {"@type": "ListItem", "position": 2, "name": "Players", "item": "http://www.fut.gg/sbc/players/"}, {"@type": "ListItem", "position": 3, "name": "Nico Williams"}]}
+        </script>
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MBVXGBJ');</script>
+
+<script data-no-optimize="1" data-cfasync="false">
+(function(w, d) {
+	w.adthrive = w.adthrive || {};
+	w.adthrive.cmd = w.
+	adthrive.cmd || [];
+	w.adthrive.plugin = 'adthrive-ads-manual';
+	w.adthrive.host = 'ads.adthrive.com';var s = d.createElement('script');
+	s.async = true;
+	s.referrerpolicy='no-referrer-when-downgrade';
+	s.src = 'https://' + w.adthrive.host + '/sites/64d26fd9ba292b33bd41f446/ads.min.js?referrer=' + w.encodeURIComponent(w.location.href) + '&cb=' + (Math.floor(Math.random() * 100) + 1);
+	var n = d.getElementsByTagName('script')[0];
+	n.parentNode.insertBefore(s, n);
+})(window, document);
+</script>
+</head>
+<body class="video-ads-enabled">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBVXGBJ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="futgg-root-app"></div>
+<div class="flex-1">
+<header class="sticky top-0 z-[9800] bg-dark-gray ">
+<div class="container mx-auto">
+<div class="flex items-center h-[50px]">
+<div class="pr-1 ">
+<button href="#" aria-label="Open Nav" data-js-selector="global-mega-menu__trigger">
+<span class="text-white p-4 -ml-4 block leading-none " data-js-selector="global-mega-menu__open">
+<svg class="svg-icon svg-icon--size-sm" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#FFF" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>
+</span>
+<span class="text-white p-4 -ml-4 hidden leading-none " data-js-selector="global-mega-menu__close">
+<svg class="svg-icon svg-icon--size-sm" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path fill="#FFF" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>
+</span>
+</button>
+</div>
+<div class="p-2 mr-1 ">
+<a class href="/">
+<img class="w-[70px] w-[15px] md:w-[94px] md:h-[20px]" src="https://assets.fut.gg/frontend/site-images/site/futgg-new-logo.png" alt="FUT.GG logo" width="70" height="15" />
+</a>
+</div>
+<div class="flex-1 h-full relative pl-2 ">
+<div class="hidden lg:block h-full">
+<nav class="h-full flex items-center">
+<div class="flex h-full items-center">
+<div class="
+                relative h-full items-center flex mr-4 
+                hover:after:opacity-100
+                after:content-[''] after:block after:absolute after:left-0 after:bottom-0 after:right-0 after:h-[2px] after:bg-gradient-to-r  after:transition-all 
+ 
+                    after:opacity-0
+                    after:from-orange after:to-dark-orange
+
+            ">
+<a class="
+                        block text-sm p-1
+ 
+                            text-white font-medium 
+                    " href="/players/">
+Players
+</a>
+</div>
+<div class="
+                relative h-full items-center flex mr-4 
+                hover:after:opacity-100
+                after:content-[''] after:block after:absolute after:left-0 after:bottom-0 after:right-0 after:h-[2px] after:bg-gradient-to-r  after:transition-all 
+                    after:from-orange after:to-dark-orange
+
+            ">
+<a class="
+                        block text-sm p-1
+ 
+                            text-white font-medium 
+                    " href="/sbc/">
+SBC
+</a>
+</div>
+<div class="
+                relative h-full items-center flex mr-4 
+                hover:after:opacity-100
+                after:content-[''] after:block after:absolute after:left-0 after:bottom-0 after:right-0 after:h-[2px] after:bg-gradient-to-r  after:transition-all 
+ 
+                    after:opacity-0
+                    after:from-orange after:to-dark-orange
+
+            ">
+<a class="
+                        block text-sm p-1
+ 
+                            text-white font-medium 
+                    " href="/squad-builder/">
+Squad Builder
+</a>
+</div>
+<div class="
+                relative h-full items-center flex mr-4 
+                hover:after:opacity-100
+                after:content-[''] after:block after:absolute after:left-0 after:bottom-0 after:right-0 after:h-[2px] after:bg-gradient-to-r  after:transition-all 
+ 
+                    after:opacity-0
+                    after:from-orange after:to-dark-orange
+
+            ">
+<a class="
+                        block text-sm p-1
+ 
+                            text-white font-medium 
+                    " href="/evolutions/">
+Evolutions
+</a>
+</div>
+<div class="
+                relative h-full items-center flex mr-4 
+                hover:after:opacity-100
+                after:content-[''] after:block after:absolute after:left-0 after:bottom-0 after:right-0 after:h-[2px] after:bg-gradient-to-r  after:transition-all 
+ 
+                    after:opacity-0
+                    after:from-orange after:to-dark-orange
+
+            ">
+<a class="
+                        block text-sm p-1
+ 
+                            text-white font-medium 
+                    " href="/objectives/">
+Objectives
+</a>
+</div>
+<div class="
+                relative h-full items-center flex mr-4 
+                hover:after:opacity-100
+                after:content-[''] after:block after:absolute after:left-0 after:bottom-0 after:right-0 after:h-[2px] after:bg-gradient-to-r  after:transition-all 
+ 
+                    after:opacity-0
+                    after:from-orange after:to-dark-orange
+
+            ">
+<a class="
+                        block text-sm p-1
+ 
+                            text-white font-medium 
+                    " href="/evo-lab/">
+Evo Lab
+</a>
+</div>
+<div class="
+                relative h-full items-center flex mr-4 
+                hover:after:opacity-100
+                after:content-[''] after:block after:absolute after:left-0 after:bottom-0 after:right-0 after:h-[2px] after:bg-gradient-to-r  after:transition-all 
+ 
+                    after:opacity-0
+                    after:from-orange after:to-dark-orange
+
+            ">
+<a class="
+                        block text-sm p-1
+ 
+                            text-white font-medium 
+                    " href="/app/">
+App
+</a>
+</div>
+</div>
+</nav>
+<div data-js-selector="desktop-global-search-app" data-placeholder="Search Players..." data-more-button-base-url="/players/" data-game-slug="25" data-theme="dark"></div>
+</div>
+<div class="lg:hidden flex items-center h-full ">
+<div class="js-global-search-app flex-grow" data-placeholder="Search Players..." data-more-button-base-url="/players/" data-enable-close-button="true" data-theme="dark" data-enable-body-overflow="true" data-game-slug="25">
+<form action method="GET" class="relative">
+<div class="items-center">
+<div class="relative flex-1">
+<input type="search" name="name" class="
+                    bg-darkest-gray text-white border border-gray placeholder:text-faded-darker-gray rounded-lg pr-14 pl-4 flex-1 w-full appearance-none focus:outline-none  focus:border-orange
+ py-2                 " placeholder="Search Players..." autocomplete="off" data-js-selector="search-input" />
+<div class="absolute right-4 top-1/2 transform -translate-y-1/2">
+<button class="border-0 bg-transparent w-8 h-8 text-faded-darker-gray leading-none" type="submit" aria-label="Search">
+<svg class="svg-icon svg-icon--size-sm" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#48494e" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+<div class="flex justify-end items-center h-full ">
+<div class="hidden mr-4 xl:block">
+<div class="social-nav">
+<ul class="social-nav__list">
+<li class="social-nav__item">
+<a class="social-nav__link" href="https://twitter.com/FUTxGG" title="Twitter" target="_blank" rel="noopener">
+<svg class="svg-icon svg-icon--size-sm" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#FFF" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
+</a>
+</li>
+<li class="social-nav__item">
+<a class="social-nav__link" href="https://instagram.com/futggsite" title="Instagram" target="_blank" rel="noopener">
+<svg class="svg-icon svg-icon--size-sm" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#FFF" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>
+</a>
+</li>
+<li class="social-nav__item">
+<a class="social-nav__link" href="https://discord.gg/futgg" title="Discord" target="_blank" rel="noopener">
+<svg class="svg-icon svg-icon--size-sm" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#FFF" d="M297.216 243.2c0 15.616-11.52 28.416-26.112 28.416-14.336 0-26.112-12.8-26.112-28.416s11.52-28.416 26.112-28.416c14.592 0 26.112 12.8 26.112 28.416zm-119.552-28.416c-14.592 0-26.112 12.8-26.112 28.416s11.776 28.416 26.112 28.416c14.592 0 26.112-12.8 26.112-28.416.256-15.616-11.52-28.416-26.112-28.416zM448 52.736V512c-64.494-56.994-43.868-38.128-118.784-107.776l13.568 47.36H52.48C23.552 451.584 0 428.032 0 398.848V52.736C0 23.552 23.552 0 52.48 0h343.04C424.448 0 448 23.552 448 52.736zm-72.96 242.688c0-82.432-36.864-149.248-36.864-149.248-36.864-27.648-71.936-26.88-71.936-26.88l-3.584 4.096c43.52 13.312 63.744 32.512 63.744 32.512-60.811-33.329-132.244-33.335-191.232-7.424-9.472 4.352-15.104 7.424-15.104 7.424s21.248-20.224 67.328-33.536l-2.56-3.072s-35.072-.768-71.936 26.88c0 0-36.864 66.816-36.864 149.248 0 0 21.504 37.12 78.08 38.912 0 0 9.472-11.52 17.152-21.248-32.512-9.728-44.8-30.208-44.8-30.208 3.766 2.636 9.976 6.053 10.496 6.4 43.21 24.198 104.588 32.126 159.744 8.96 8.96-3.328 18.944-8.192 29.44-15.104 0 0-12.8 20.992-46.336 30.464 7.68 9.728 16.896 20.736 16.896 20.736 56.576-1.792 78.336-38.912 78.336-38.912z"></path></svg>
+</a>
+</li>
+</ul>
+</div> </div>
+<div class="max-lg:hidden flex items-center">
+<div class="pl-2 border-l border-faded-dark-gray xl:pl-4">
+<div class="js-user-menu-app">
+<div class="skeleton skeleton--wave" style="width: 32px;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fixed md:absolute top-[50px] left-0 right-0 bottom-0 z-[1000] w-full border-b-2 border-dark-gray bg-darker-gray hidden" data-js-selector="global-mega-menu__content">
+<div class="container py-4 h-full">
+<nav class="global-mega-menu grid grid-rows-[1fr_auto] h-full">
+<div class="global-mega-menu__content overflow-y-auto h-full">
+<div class="global-mega-menu__user">
+<div class="px-1 js-mobile-user-menu-app">
+<div class="max-w-[150px] flex">
+<div class="flex-1">
+<div class="skeleton skeleton--wave"></div>
+</div>
+</div>
+</div>
+<hr class="mt-4" />
+</div>
+<div class="global-mega-menu__groups">
+<div class="flex gap-3 md:hidden">
+<a href="https://apps.apple.com/us/app/fut-gg-fc-24-evos-prices/id6470957382" target="_blank">
+<img src="https://assets.fut.gg/frontend/site-images/site/download-apple.webp" alt="iOS" class="h-[45px]" />
+</a>
+<a href="https://play.google.com/store/apps/details?id=com.futgg.futgg" target="_blank">
+<img src="https://assets.fut.gg/frontend/site-images/site/download-google.webp" alt="Android" class="h-[45px]" />
+</a>
+</div>
+<div class="global-mega-menu__group">
+<div class="global-mega-menu__group-header">
+EA FC 25
+</div>
+<ul class="global-mega-menu__nav">
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/players/">Players</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/evolutions/">Evolutions</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/squad-builder/">Squad Builder</a>
+<div class="inline bg-orange text-black font-bold text-xxs uppercase px-1 rounded ml-1">New</div>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/sbc/">SBC</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/objectives/">Objectives</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/roles/">Roles</a>
+<div class="inline bg-orange text-black font-bold text-xxs uppercase px-1 rounded ml-1">New</div>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/rush/">Rush</a>
+<div class="inline bg-orange text-black font-bold text-xxs uppercase px-1 rounded ml-1">New</div>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link !text-evo font-bold" href="/evo-lab/">Evo Lab</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/playstyles/">PlayStyles</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/news/">News</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/squads/">Squads</a>
+</li>
+</ul>
+</div>
+<div class="global-mega-menu__group">
+<div class="global-mega-menu__group-header">
+Trackers
+</div>
+<ul class="global-mega-menu__nav">
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/collections/">Collections
+</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/path-to-glory/">Path to Glory Live Tracker
+</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/trackers/tots-live/">TOTS Live Tracker
+</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/trackers/fut-fantasy/">Fantasy FC Tracker
+</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/trackers/thunderstruck/">Thunderstruck Tracker
+</a>
+</li>
+</ul>
+<div class="global-mega-menu__group-header">
+Groups
+</div>
+<ul class="global-mega-menu__nav">
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/past-and-present/">Past & Present</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/rarities/">Rarities</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/clubs/">Clubs</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/nations/">Nations</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/leagues/">Leagues</a>
+</li>
+</ul>
+</div>
+<div class="global-mega-menu__group">
+<div class="global-mega-menu__group-header">
+Tools
+</div>
+<ul class="global-mega-menu__nav">
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/upgrade-hub/">Live Upgrade Hub
+</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/card-creator/">Card Creator
+</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/pools/">
+Player Pools
+</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/cheapest-by-rating/">
+Cheapest by Rating
+</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/compare/">Compare</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/players/momentum/">Momentum Trends</a>
+</li>
+</ul>
+</div>
+<div class="global-mega-menu__group">
+<div class="global-mega-menu__group-header">
+Misc
+</div>
+<ul class="global-mega-menu__nav">
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/players/library/">Player Library</a>
+</li>
+<li class="global-mega-menu__nav-item">
+<a class="global-mega-menu__nav-link" href="/store/">Store</a>
+</li>
+</ul>
+<div class="max-w-[150px] mt-5 gap-3 hidden md:grid">
+<a href="https://apps.apple.com/us/app/fut-gg-fc-24-evos-prices/id6470957382" target="_blank">
+<img src="https://assets.fut.gg/frontend/site-images/site/download-apple.webp" alt="iOS" />
+</a>
+<a href="https://play.google.com/store/apps/details?id=com.futgg.futgg" target="_blank">
+<img src="https://assets.fut.gg/frontend/site-images/site/download-google.webp" alt="Android" />
+</a>
+</div>
+</div>
+</div>
+<div class="global-mega-menu__social d-lg-none">
+<hr/>
+<div class="mobile-nav__social">
+<div class="social-nav">
+<ul class="social-nav__list">
+<li class="social-nav__item">
+<a class="social-nav__link" href="https://twitter.com/FUTxGG" title="Twitter" target="_blank" rel="noopener">
+<svg class="svg-icon svg-icon--size-sm" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#FFF" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
+</a>
+</li>
+<li class="social-nav__item">
+<a class="social-nav__link" href="https://instagram.com/futggsite" title="Instagram" target="_blank" rel="noopener">
+<svg class="svg-icon svg-icon--size-sm" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#FFF" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>
+</a>
+</li>
+<li class="social-nav__item">
+<a class="social-nav__link" href="https://discord.gg/futgg" title="Discord" target="_blank" rel="noopener">
+<svg class="svg-icon svg-icon--size-sm" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#FFF" d="M297.216 243.2c0 15.616-11.52 28.416-26.112 28.416-14.336 0-26.112-12.8-26.112-28.416s11.52-28.416 26.112-28.416c14.592 0 26.112 12.8 26.112 28.416zm-119.552-28.416c-14.592 0-26.112 12.8-26.112 28.416s11.776 28.416 26.112 28.416c14.592 0 26.112-12.8 26.112-28.416.256-15.616-11.52-28.416-26.112-28.416zM448 52.736V512c-64.494-56.994-43.868-38.128-118.784-107.776l13.568 47.36H52.48C23.552 451.584 0 428.032 0 398.848V52.736C0 23.552 23.552 0 52.48 0h343.04C424.448 0 448 23.552 448 52.736zm-72.96 242.688c0-82.432-36.864-149.248-36.864-149.248-36.864-27.648-71.936-26.88-71.936-26.88l-3.584 4.096c43.52 13.312 63.744 32.512 63.744 32.512-60.811-33.329-132.244-33.335-191.232-7.424-9.472 4.352-15.104 7.424-15.104 7.424s21.248-20.224 67.328-33.536l-2.56-3.072s-35.072-.768-71.936 26.88c0 0-36.864 66.816-36.864 149.248 0 0 21.504 37.12 78.08 38.912 0 0 9.472-11.52 17.152-21.248-32.512-9.728-44.8-30.208-44.8-30.208 3.766 2.636 9.976 6.053 10.496 6.4 43.21 24.198 104.588 32.126 159.744 8.96 8.96-3.328 18.944-8.192 29.44-15.104 0 0-12.8 20.992-46.336 30.464 7.68 9.728 16.896 20.736 16.896 20.736 56.576-1.792 78.336-38.912 78.336-38.912z"></path></svg>
+</a>
+</li>
+</ul>
+</div> </div>
+</div>
+</div>
+</nav> </div>
+</div>
+</header>
+<div class="w-full border-t border-b border-gray">
+<a href="https://discord.gg/futgg" class="group">
+<div class="bg-dark-gray rounded text-sm py-2 group-hover:bg-orange">
+<div class="container">
+<div class="flex gap-2 items-center">
+<div class="flex items-center gap-2 flex-row">
+<div class="flex flex-row gap-2 text-[#10B152] group-hover:text-black">
+<svg class="svg-icon svg-icon--size-sm" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.99999 8.5C7.99999 7.94772 7.55227 7.5 6.99999 7.5C6.4477 7.5 5.99999 7.94772 5.99999 8.5V9H5.49999C4.9477 9 4.49999 9.44771 4.49999 10C4.49999 10.5523 4.9477 11 5.49999 11H5.99999V11.5C5.99999 12.0523 6.4477 12.5 6.99999 12.5C7.55227 12.5 7.99999 12.0523 7.99999 11.5V11H8.49999C9.05227 11 9.49999 10.5523 9.49999 10C9.49999 9.44771 9.05227 9 8.49999 9H7.99999V8.5Z" fill="currentColor" />
+<path d="M18 8C18 8.55229 17.5523 9 17 9C16.4477 9 16 8.55229 16 8C16 7.44772 16.4477 7 17 7C17.5523 7 18 7.44772 18 8Z" fill="currentColor" />
+<path d="M17 13C17.5523 13 18 12.5523 18 12C18 11.4477 17.5523 11 17 11C16.4477 11 16 11.4477 16 12C16 12.5523 16.4477 13 17 13Z" fill="currentColor" />
+<path d="M16 10C16 10.5523 15.5523 11 15 11C14.4477 11 14 10.5523 14 10C14 9.44771 14.4477 9 15 9C15.5523 9 16 9.44771 16 10Z" fill="currentColor" />
+<path d="M19 11C19.5523 11 20 10.5523 20 10C20 9.44771 19.5523 9 19 9C18.4477 9 18 9.44771 18 10C18 10.5523 18.4477 11 19 11Z" fill="currentColor" />
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12 3C10.1879 3 7.96237 3.25817 6.21782 3.5093C3.94305 3.83676 2.09096 5.51696 1.60993 7.7883C1.34074 9.05935 1.07694 10.5622 1.01649 11.8204C0.973146 12.7225 0.877981 13.9831 0.777155 15.1923C0.672256 16.4504 1.09148 17.7464 1.86079 18.6681C2.64583 19.6087 3.88915 20.2427 5.32365 19.8413C6.24214 19.5842 6.97608 18.9387 7.5205 18.3026C8.07701 17.6525 8.51992 16.9124 8.83535 16.3103C9.07821 15.8467 9.50933 15.5855 9.91539 15.5855H14.0846C14.4906 15.5855 14.9218 15.8467 15.1646 16.3103C15.4801 16.9124 15.923 17.6525 16.4795 18.3026C17.0239 18.9387 17.7578 19.5842 18.6763 19.8413C20.1108 20.2427 21.3541 19.6087 22.1392 18.6681C22.9085 17.7464 23.3277 16.4504 23.2228 15.1923C23.122 13.9831 23.0268 12.7225 22.9835 11.8204C22.923 10.5622 22.6592 9.05935 22.39 7.7883C21.909 5.51696 20.0569 3.83676 17.7821 3.5093C16.0376 3.25817 13.8121 3 12 3ZM6.50279 5.48889C8.22744 5.24063 10.3368 5 12 5C13.6632 5 15.7725 5.24063 17.4972 5.4889C18.965 5.70019 20.1311 6.77489 20.4334 8.20267C20.6967 9.44565 20.9332 10.8223 20.9858 11.9164C21.0309 12.856 21.1287 14.1463 21.2297 15.3585C21.2912 16.0956 21.0342 16.8708 20.6037 17.3866C20.1889 17.8836 19.7089 18.0534 19.2153 17.9153C18.8497 17.8129 18.4327 17.509 17.9989 17.0021C17.5771 16.5094 17.2144 15.9131 16.9362 15.3822C16.4043 14.3667 15.3482 13.5855 14.0846 13.5855H9.91539C8.65178 13.5855 7.59571 14.3667 7.06374 15.3822C6.78558 15.9131 6.42285 16.5094 6.00109 17.0021C5.56723 17.509 5.15027 17.8129 4.78463 17.9153C4.29109 18.0534 3.81102 17.8836 3.39625 17.3866C2.96576 16.8708 2.70878 16.0956 2.77024 15.3585C2.87131 14.1463 2.96904 12.856 3.01418 11.9164C3.06675 10.8223 3.30329 9.44565 3.56653 8.20267C3.86891 6.77489 5.03497 5.70019 6.50279 5.48889Z" fill="currentColor" />
+</svg>
+</div>
+<div class="flex flex-row gap-3 text-lightest-gray group-hover:text-black items-center font-bold">
+<p class>Looking for Rush teammates? Use our Discord Rush Matchmaking system!</p>
+<svg class="svg-icon svg-icon--size-xs" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div data-js-selector="page-head" data-sticky="true">
+<div class="
+        bg-darker-gray mb-4
+        group-[.-sticky-header]:fixed group-[.-sticky-header]:z-[100] group-[.-sticky-header]:top-[50px] group-[.-sticky-header]:left-0 group-[.-sticky-header]:right-0 group-[.-sticky-header]:hidden
+        group-[.-sticky-header-visible]:!block
+ 
+            pt-3 
+    ">
+<div class="container">
+<div data-remove-while-sticky>
+<ul class="flex flex-wrap items-center text-sm">
+<li class="
+            hidden md:flex md:items-center
+    ">
+<a class="text-white" href="/">FUT.GG</a>
+<svg class="w-2 h-2 mx-2 md:mx-4 text-light-gray" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+</svg>
+</li>
+<li class="flex items-center">
+<a class="text-white" href="/sbc/">SBC</a>
+<svg class="w-2 h-2 mx-2 md:mx-4 text-light-gray" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+</svg>
+</li>
+<li class="flex items-center">
+<a class="text-white" href="/sbc/players/">Players</a>
+<svg class="w-2 h-2 mx-2 md:mx-4 text-light-gray" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+</svg>
+</li>
+<li class="flex items-center">
+<span class="text-lighter-gray">Nico Williams</span>
+</li>
+</ul> </div>
+<div>
+<div>
+<div>
+<div class="
+                                mt-2
+                                max-md:group-[.-sticky-header]:!mt-0
+                            ">
+<div>
+<h1 class="
+                                            font-bold text-3xl md:text-4xl
+                                            group-[.-sticky-header]:text-2xl group-[.-sticky-header]:mt-0
+                                        ">
+Nico Williams SBC
+</h1>
+</div>
+</div>
+<p class="text-lighter-gray mt-1 text-sm md:text-md max-w-[1024px]" data-remove-while-sticky>Earn a UEFA Europa League Road To The Knockouts, Nico Williams.</p>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="overflow-x-auto flex items-center scrollable pr-3 md:pr-0 whitespace-nowrap">
+<nav>
+<ul class="flex gap-4">
+<li class="font-bold text-xxs uppercase">
+<a class="
+                                relative block text-lighter-gray py-3 pointer
+                                after:content-[''] after:block after:absolute after:left-0 after:right-0 after:bottom-0 after:h-[2px] after:transition-all after:opacity-0  after:bg-gradient-to-r after:from-orange after:to-dark-orange
+                                hover:after:opacity-100 group-[.-active]:after:opacity-100
+                            " href="#info" data-js-scroll-link="true">
+Info &amp; Rewards
+</a>
+</li>
+<li class="font-bold text-xxs uppercase">
+<a class="
+                                relative block text-lighter-gray py-3 pointer
+                                after:content-[''] after:block after:absolute after:left-0 after:right-0 after:bottom-0 after:h-[2px] after:transition-all after:opacity-0  after:bg-gradient-to-r after:from-orange after:to-dark-orange
+                                hover:after:opacity-100 group-[.-active]:after:opacity-100
+                            " href="#challenges" data-js-scroll-link="true">
+Challenges
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div> </div>
+</div>
+</div>
+<main class="global-content">
+<div class="container"><div>
+<div class="grid md:grid-cols-2 gap-2 md:gap-8 border-b border-gray pb-4 mb-4" id="info">
+<div class="
+        bg-dark-gray rounded grid grid-rows-[auto_1fr] items-center
+    ">
+<div class="bg-darker-gray rounded-t py-2 px-4 relative text-white grid grid-cols-[1fr_auto] gap-2">
+<h2 class="text-xl font-bold">
+SBC Information
+</h2>
+<div class="self-end text-right flex gap-2">
+<div class="bg-gray rounded font-bold text-sm px-2 py-1 flex items-center">
+<span class="price-coin price-coin--size-xs mr-2"></span>
+549,550
+</div>
+</div>
+</div>
+<div class="grid grid-cols-[1fr_2fr] items-center p-2 gap-2">
+<div class="mx-auto w-full max-lg:max-w-[142px] max-w-[180px]">
+<a href="/players/256516-nico-williams/25-50588164/"> <img src="https://game-assets.fut.gg/2025/futgg-player-item-card/25-50588164.a8e3c0c889552607149f394f9653beeeebd177109eefc2c6bc30b0ff3462f9b9.webp?quality=90&amp;width=500" alt="Nico Williams" loading="lazy" />
+</a> </div>
+<div>
+<p class="text-sm mb-3">Earn a UEFA Europa League Road To The Knockouts, Nico Williams.</p>
+<a href="/players/256516-nico-williams/25-50588164/">
+<div class="bg-darker-gray rounded px-2 py-1   hover:bg-orange">
+<div class="flex justify-between items-center gap-2">
+<div class="grid grid-cols-[17px_1fr] gap-2 items-center">
+<div class="w-[15px]">
+<img src="https://game-assets.fut.gg/2025/rarities-level-0-large/46.9e904bb990db74a644bde1da13e37b4d858671c839cb86919216e7855ef13c6d.png?quality=100&amp;width=500" class="w-full h-full object-contain" alt="Nico Williams" width="20" />
+</div>
+<p class="text-xs text-white"> 86 Nico Williams
+</p>
+</div>
+<div class="flex items-center">
+<svg class="svg-icon svg-icon--size-sm" fill="#DDD" viewBox="0 0 64 64" version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+<g id="external-link">
+<path d="M36.026,20.058l-21.092,0c-1.65,0 -2.989,1.339 -2.989,2.989l0,25.964c0,1.65 1.339,2.989 2.989,2.989l26.024,0c1.65,0 2.989,-1.339 2.989,-2.989l0,-20.953l3.999,0l0,21.948c0,3.308 -2.686,5.994 -5.995,5.995l-28.01,0c-3.309,0 -5.995,-2.687 -5.995,-5.995l0,-27.954c0,-3.309 2.686,-5.995 5.995,-5.995l22.085,0l0,4.001Z" fill="#DDD" />
+<path d="M55.925,25.32l-4.005,0l0,-10.481l-27.894,27.893l-2.832,-2.832l27.895,-27.895l-10.484,0l0,-4.005l17.318,0l0.002,0.001l0,17.319Z" fill="#DDD" />
+</g>
+</svg>
+</div>
+</div>
+</div>
+</a>
+<div class="grid mt-1 gap-1 md:grid-cols-2 md:mt-2 md:gap-2">
+<div class="
+        bg-darker-gray rounded py-2 max-md:flex max-md:justify-between max-md:items-center max-md:pr-2 max-md:py-1
+    ">
+<span class="block text-center text-lighter-gray font-bold px-2 text-xxs xl:text-sm group-hover:text-white uppercase">Challenges</span>
+<span class="block text-center font-bold text-md text-white max-md:text-sm">6</span>
+</div>
+<div class="
+        bg-darker-gray rounded py-2 max-md:flex max-md:justify-between max-md:items-center max-md:pr-2 max-md:py-1
+    ">
+<span class="block text-center text-lighter-gray font-bold px-2 text-xxs xl:text-sm group-hover:text-white uppercase">Expires In</span>
+<span class="block text-center font-bold text-md text-white max-md:text-sm">12 days</span>
+</div>
+<div class="
+        bg-darker-gray rounded py-2 max-md:flex max-md:justify-between max-md:items-center max-md:pr-2 max-md:py-1
+ max-md:hidden     ">
+<span class="block text-center text-lighter-gray font-bold px-2 text-xxs xl:text-sm group-hover:text-white uppercase">Repeatable</span>
+<span class="block text-center font-bold text-md text-white max-md:text-sm">-</span>
+</div>
+<div class="
+        bg-darker-gray rounded py-2 max-md:flex max-md:justify-between max-md:items-center max-md:pr-2 max-md:py-1
+ max-md:hidden     ">
+<span class="block text-center text-lighter-gray font-bold px-2 text-xxs xl:text-sm group-hover:text-white uppercase">Refreshes In</span>
+<span class="block text-center font-bold text-md text-white max-md:text-sm">-</span>
+</div>
+</div>
+</div>
+</div>
+<div class="rounded-b flex items-center justify-end bg-darker-gray px-2 h-[50px]">
+<div data-js-selector="voting-app" data-content-type-id="20" data-entity-id="2581" data-is-detail-view="true" data-is-percentage-view="true"></div>
+</div>
+</div>
+<div class="bg-dark-gray rounded grid grid-rows-[auto_1fr]">
+<div class="bg-darker-gray rounded-t py-2 px-4 relative text-white grid grid-cols-[1fr_auto] gap-2">
+<h2 class="text-xl font-bold">SBC Rewards</h2>
+</div>
+<div class="max-h-[400px] overflow-y-auto">
+<ul class="p-2 grid  gap-2">
+<a href="/players/256516-nico-williams/25-50588164/">
+<div class="bg-darker-gray rounded px-2 py-1   hover:bg-orange">
+<div class="flex justify-between items-center gap-2">
+<div class="grid grid-cols-[17px_1fr] gap-2 items-center">
+<div class="w-[15px]">
+<img src="https://game-assets.fut.gg/2025/rarities-level-0-large/46.9e904bb990db74a644bde1da13e37b4d858671c839cb86919216e7855ef13c6d.png?quality=100&amp;width=500" class="w-full h-full object-contain" alt="Nico Williams" width="20" />
+</div>
+<p class="text-xs text-white"> 86 Nico Williams
+</p>
+</div>
+<div class="flex items-center">
+<svg class="svg-icon svg-icon--size-sm" fill="#DDD" viewBox="0 0 64 64" version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+<g id="external-link">
+<path d="M36.026,20.058l-21.092,0c-1.65,0 -2.989,1.339 -2.989,2.989l0,25.964c0,1.65 1.339,2.989 2.989,2.989l26.024,0c1.65,0 2.989,-1.339 2.989,-2.989l0,-20.953l3.999,0l0,21.948c0,3.308 -2.686,5.994 -5.995,5.995l-28.01,0c-3.309,0 -5.995,-2.687 -5.995,-5.995l0,-27.954c0,-3.309 2.686,-5.995 5.995,-5.995l22.085,0l0,4.001Z" fill="#DDD" />
+<path d="M55.925,25.32l-4.005,0l0,-10.481l-27.894,27.893l-2.832,-2.832l27.895,-27.895l-10.484,0l0,-4.005l17.318,0l0.002,0.001l0,17.319Z" fill="#DDD" />
+</g>
+</svg>
+</div>
+</div>
+</div>
+</a>
+<div class="bg-darker-gray rounded px-2 py-1  ">
+<div class="flex justify-between items-center gap-2">
+<div class="grid grid-cols-[17px_1fr] gap-2 items-center">
+<div class="w-[15px]">
+<img src="https://assets.fut.gg/frontend/site-images/site/pack.webp" class="w-full h-full object-contain" alt="Pack" width="20" />
+</div>
+<p class="text-xs text-white"> 1x Jumbo Gold Pack
+</p>
+</div>
+</div>
+</div>
+<div class="bg-darker-gray rounded px-2 py-1  ">
+<div class="flex justify-between items-center gap-2">
+<div class="grid grid-cols-[17px_1fr] gap-2 items-center">
+<div class="w-[15px]">
+<img src="https://assets.fut.gg/frontend/site-images/site/pack.webp" class="w-full h-full object-contain" alt="Pack" width="20" />
+</div>
+<p class="text-xs text-white"> 1x Jumbo Gold Pack
+</p>
+</div>
+</div>
+</div>
+<div class="bg-darker-gray rounded px-2 py-1  ">
+<div class="flex justify-between items-center gap-2">
+<div class="grid grid-cols-[17px_1fr] gap-2 items-center">
+<div class="w-[15px]">
+<img src="https://assets.fut.gg/frontend/site-images/site/pack.webp" class="w-full h-full object-contain" alt="Pack" width="20" />
+</div>
+<p class="text-xs text-white"> 1x Premium Mixed Players Pack
+</p>
+</div>
+</div>
+</div>
+<div class="bg-darker-gray rounded px-2 py-1  ">
+<div class="flex justify-between items-center gap-2">
+<div class="grid grid-cols-[17px_1fr] gap-2 items-center">
+<div class="w-[15px]">
+<img src="https://assets.fut.gg/frontend/site-images/site/pack.webp" class="w-full h-full object-contain" alt="Pack" width="20" />
+</div>
+<p class="text-xs text-white"> 1x Prime Electrum Players Pack
+</p>
+</div>
+</div>
+</div>
+<div class="bg-darker-gray rounded px-2 py-1  ">
+<div class="flex justify-between items-center gap-2">
+<div class="grid grid-cols-[17px_1fr] gap-2 items-center">
+<div class="w-[15px]">
+<img src="https://assets.fut.gg/frontend/site-images/site/pack.webp" class="w-full h-full object-contain" alt="Pack" width="20" />
+</div>
+<p class="text-xs text-white"> 1x Prime Electrum Players Pack
+</p>
+</div>
+</div>
+</div>
+<div class="bg-darker-gray rounded px-2 py-1  ">
+<div class="flex justify-between items-center gap-2">
+<div class="grid grid-cols-[17px_1fr] gap-2 items-center">
+<div class="w-[15px]">
+<img src="https://assets.fut.gg/frontend/site-images/site/pack.webp" class="w-full h-full object-contain" alt="Pack" width="20" />
+</div>
+<p class="text-xs text-white"> 1x Mega Pack
+</p>
+</div>
+</div>
+</div>
+</ul>
+</div>
+</div>
+</div>
+<div id="challenges">
+<h2 class="text-xl font-bold mb-2">SBC Challenges</h2>
+<div class="grid lg:grid-cols-2 gap-2 lg:gap-8">
+<div class="
+        bg-dark-gray rounded grid grid-rows-[auto_1fr] items-center
+ !grid-rows-[auto_1fr_40px]     ">
+<div class="bg-darker-gray rounded-t py-2 px-4 relative text-white grid grid-cols-[1fr_auto] gap-2">
+<h2 class="text-xl font-bold">
+Spain
+</h2>
+<div class="self-end text-right flex gap-2">
+<div class="bg-gray rounded font-bold text-sm px-2 py-1 flex items-center">
+<span class="price-coin price-coin--size-xs mr-2"></span>
+56,500
+</div>
+</div>
+</div>
+<div class="grid grid-cols-[1fr_2fr] items-center p-2 gap-2">
+<div class="mx-auto w-full max-lg:max-w-[142px] max-w-[180px]">
+<a href="/25/squad-builder/2d405988-b5a9-4a1e-903b-6d04883e93fa/"> <img src="https://game-assets.fut.gg/2025/sbcs/challenges/110.png?quality=90&amp;width=400" alt="Spain" loading="lazy" />
+</a> </div>
+<div>
+<p class="text-sm mb-3 font-medium">Exchange a squad featuring players from Spain.</p>
+<div class="bg-darker-gray rounded px-2 py-1  ">
+<div class="flex justify-between items-center gap-2">
+<div class="grid grid-cols-[17px_1fr] gap-2 items-center">
+<div class="w-[15px]">
+<img src="https://assets.fut.gg/frontend/site-images/site/pack.webp" class="w-full h-full object-contain" alt="Pack" width="20" />
+</div>
+<p class="text-xs text-white"> 1x Jumbo Gold Pack
+</p>
+</div>
+</div>
+</div>
+<div class="mt-2">
+<p class="text-sm">Min. 1 Players from: Spain</p>
+<p class="text-sm">Min. Team Rating: 86</p>
+</div>
+</div>
+</div>
+<a href="/25/squad-builder/2d405988-b5a9-4a1e-903b-6d04883e93fa/" class="uppercase bg-darker-gray rounded font-bold text-white py-2 text-center block hover:bg-orange hover:text-white text-sm h-[40px]">
+View Solution
+</a>
+</div>
+<div class="
+        bg-dark-gray rounded grid grid-rows-[auto_1fr] items-center
+ !grid-rows-[auto_1fr_40px]     ">
+<div class="bg-darker-gray rounded-t py-2 px-4 relative text-white grid grid-cols-[1fr_auto] gap-2">
+<h2 class="text-xl font-bold">
+LALIGA
+</h2>
+<div class="self-end text-right flex gap-2">
+<div class="bg-gray rounded font-bold text-sm px-2 py-1 flex items-center">
+<span class="price-coin price-coin--size-xs mr-2"></span>
+57,950
+</div>
+</div>
+</div>
+<div class="grid grid-cols-[1fr_2fr] items-center p-2 gap-2">
+<div class="mx-auto w-full max-lg:max-w-[142px] max-w-[180px]">
+<a href="/25/squad-builder/14c9fe6e-55b8-4324-aabf-9d32bfbf2807/"> <img src="https://game-assets.fut.gg/2025/sbcs/challenges/111.png?quality=90&amp;width=400" alt="LALIGA" loading="lazy" />
+</a> </div>
+<div>
+<p class="text-sm mb-3 font-medium">Exchange a squad featuring players from LALIGA.</p>
+<div class="bg-darker-gray rounded px-2 py-1  ">
+<div class="flex justify-between items-center gap-2">
+<div class="grid grid-cols-[17px_1fr] gap-2 items-center">
+<div class="w-[15px]">
+<img src="https://assets.fut.gg/frontend/site-images/site/pack.webp" class="w-full h-full object-contain" alt="Pack" width="20" />
+</div>
+<p class="text-xs text-white"> 1x Jumbo Gold Pack
+</p>
+</div>
+</div>
+</div>
+<div class="mt-2">
+<p class="text-sm">Min. 1 Players from: LALIGA EA SPORTS</p>
+<p class="text-sm">Min. Team Rating: 86</p>
+</div>
+</div>
+</div>
+<a href="/25/squad-builder/14c9fe6e-55b8-4324-aabf-9d32bfbf2807/" class="uppercase bg-darker-gray rounded font-bold text-white py-2 text-center block hover:bg-orange hover:text-white text-sm h-[40px]">
+View Solution
+</a>
+</div>
+<div class="
+        bg-dark-gray rounded grid grid-rows-[auto_1fr] items-center
+ !grid-rows-[auto_1fr_40px]     ">
+<div class="bg-darker-gray rounded-t py-2 px-4 relative text-white grid grid-cols-[1fr_auto] gap-2">
+<h2 class="text-xl font-bold">
+Top Form
+</h2>
+<div class="self-end text-right flex gap-2">
+<div class="bg-gray rounded font-bold text-sm px-2 py-1 flex items-center">
+<span class="price-coin price-coin--size-xs mr-2"></span>
+65,950
+</div>
+</div>
+</div>
+<div class="grid grid-cols-[1fr_2fr] items-center p-2 gap-2">
+<div class="mx-auto w-full max-lg:max-w-[142px] max-w-[180px]">
+<a href="/25/squad-builder/c0a6fcd6-53bc-407f-bd25-e0554ea032ea/"> <img src="https://game-assets.fut.gg/2025/sbcs/challenges/112.png?quality=90&amp;width=400" alt="Top Form" loading="lazy" />
+</a> </div>
+<div>
+<p class="text-sm mb-3 font-medium">Exchange a squad featuring a TOTW player.</p>
+<div class="bg-darker-gray rounded px-2 py-1  ">
+<div class="flex justify-between items-center gap-2">
+<div class="grid grid-cols-[17px_1fr] gap-2 items-center">
+<div class="w-[15px]">
+<img src="https://assets.fut.gg/frontend/site-images/site/pack.webp" class="w-full h-full object-contain" alt="Pack" width="20" />
+</div>
+<p class="text-xs text-white"> 1x Premium Mixed Players Pack
+</p>
+</div>
+</div>
+</div>
+<div class="mt-2">
+<p class="text-sm">Min. 1 Players: Team of the Week</p>
+<p class="text-sm">Min. Team Rating: 86</p>
+</div>
+</div>
+</div>
+<a href="/25/squad-builder/c0a6fcd6-53bc-407f-bd25-e0554ea032ea/" class="uppercase bg-darker-gray rounded font-bold text-white py-2 text-center block hover:bg-orange hover:text-white text-sm h-[40px]">
+View Solution
+</a>
+</div>
+<div class="
+        bg-dark-gray rounded grid grid-rows-[auto_1fr] items-center
+ !grid-rows-[auto_1fr_40px]     ">
+<div class="bg-darker-gray rounded-t py-2 px-4 relative text-white grid grid-cols-[1fr_auto] gap-2">
+<h2 class="text-xl font-bold">
+87-Rated Squad
+</h2>
+<div class="self-end text-right flex gap-2">
+<div class="bg-gray rounded font-bold text-sm px-2 py-1 flex items-center">
+<span class="price-coin price-coin--size-xs mr-2"></span>
+101,950
+</div>
+</div>
+</div>
+<div class="grid grid-cols-[1fr_2fr] items-center p-2 gap-2">
+<div class="mx-auto w-full max-lg:max-w-[142px] max-w-[180px]">
+<a href="/25/squad-builder/db595740-47ab-4a4f-af48-1f59a8aca92d/"> <img src="https://game-assets.fut.gg/2025/sbcs/challenges/114.png?quality=90&amp;width=400" alt="87-Rated Squad" loading="lazy" />
+</a> </div>
+<div>
+<p class="text-sm mb-3 font-medium">Exchange an 87 Rated Squad.</p>
+<div class="bg-darker-gray rounded px-2 py-1  ">
+<div class="flex justify-between items-center gap-2">
+<div class="grid grid-cols-[17px_1fr] gap-2 items-center">
+<div class="w-[15px]">
+<img src="https://assets.fut.gg/frontend/site-images/site/pack.webp" class="w-full h-full object-contain" alt="Pack" width="20" />
+</div>
+<p class="text-xs text-white"> 1x Prime Electrum Players Pack
+</p>
+</div>
+</div>
+</div>
+<div class="mt-2">
+<p class="text-sm">Min. Team Rating: 87</p>
+</div>
+</div>
+</div>
+<a href="/25/squad-builder/db595740-47ab-4a4f-af48-1f59a8aca92d/" class="uppercase bg-darker-gray rounded font-bold text-white py-2 text-center block hover:bg-orange hover:text-white text-sm h-[40px]">
+View Solution
+</a>
+</div>
+<div class="
+        bg-dark-gray rounded grid grid-rows-[auto_1fr] items-center
+ !grid-rows-[auto_1fr_40px]     ">
+<div class="bg-darker-gray rounded-t py-2 px-4 relative text-white grid grid-cols-[1fr_auto] gap-2">
+<h2 class="text-xl font-bold">
+87-Rated Squad
+</h2>
+<div class="self-end text-right flex gap-2">
+<div class="bg-gray rounded font-bold text-sm px-2 py-1 flex items-center">
+<span class="price-coin price-coin--size-xs mr-2"></span>
+101,950
+</div>
+</div>
+</div>
+<div class="grid grid-cols-[1fr_2fr] items-center p-2 gap-2">
+<div class="mx-auto w-full max-lg:max-w-[142px] max-w-[180px]">
+<a href="/25/squad-builder/b8987e6c-3b02-4f4c-9777-435a11c1cee7/"> <img src="https://game-assets.fut.gg/2025/sbcs/challenges/115.png?quality=90&amp;width=400" alt="87-Rated Squad" loading="lazy" />
+</a> </div>
+<div>
+<p class="text-sm mb-3 font-medium">Exchange an 87 Rated Squad.</p>
+<div class="bg-darker-gray rounded px-2 py-1  ">
+<div class="flex justify-between items-center gap-2">
+<div class="grid grid-cols-[17px_1fr] gap-2 items-center">
+<div class="w-[15px]">
+<img src="https://assets.fut.gg/frontend/site-images/site/pack.webp" class="w-full h-full object-contain" alt="Pack" width="20" />
+</div>
+<p class="text-xs text-white"> 1x Prime Electrum Players Pack
+</p>
+</div>
+</div>
+</div>
+<div class="mt-2">
+<p class="text-sm">Min. Team Rating: 87</p>
+</div>
+</div>
+</div>
+<a href="/25/squad-builder/b8987e6c-3b02-4f4c-9777-435a11c1cee7/" class="uppercase bg-darker-gray rounded font-bold text-white py-2 text-center block hover:bg-orange hover:text-white text-sm h-[40px]">
+View Solution
+</a>
+</div>
+<div class="
+        bg-dark-gray rounded grid grid-rows-[auto_1fr] items-center
+ !grid-rows-[auto_1fr_40px]     ">
+<div class="bg-darker-gray rounded-t py-2 px-4 relative text-white grid grid-cols-[1fr_auto] gap-2">
+<h2 class="text-xl font-bold">
+88-Rated Squad
+</h2>
+<div class="self-end text-right flex gap-2">
+<div class="bg-gray rounded font-bold text-sm px-2 py-1 flex items-center">
+<span class="price-coin price-coin--size-xs mr-2"></span>
+165,250
+</div>
+</div>
+</div>
+<div class="grid grid-cols-[1fr_2fr] items-center p-2 gap-2">
+<div class="mx-auto w-full max-lg:max-w-[142px] max-w-[180px]">
+<a href="/25/squad-builder/6e7e5359-f09b-479c-92a0-852dea52c4aa/"> <img src="https://game-assets.fut.gg/2025/sbcs/challenges/116.png?quality=90&amp;width=400" alt="88-Rated Squad" loading="lazy" />
+</a> </div>
+<div>
+<p class="text-sm mb-3 font-medium">Exchange an 88 Rated Squad</p>
+<div class="bg-darker-gray rounded px-2 py-1  ">
+<div class="flex justify-between items-center gap-2">
+<div class="grid grid-cols-[17px_1fr] gap-2 items-center">
+<div class="w-[15px]">
+<img src="https://assets.fut.gg/frontend/site-images/site/pack.webp" class="w-full h-full object-contain" alt="Pack" width="20" />
+</div>
+<p class="text-xs text-white"> 1x Mega Pack
+</p>
+</div>
+</div>
+</div>
+<div class="mt-2">
+<p class="text-sm">Min. Team Rating: 88</p>
+</div>
+</div>
+</div>
+<a href="/25/squad-builder/6e7e5359-f09b-479c-92a0-852dea52c4aa/" class="uppercase bg-darker-gray rounded font-bold text-white py-2 text-center block hover:bg-orange hover:text-white text-sm h-[40px]">
+View Solution
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<div data-js-selector="gg-debugger"></div>
+<footer class="bg-footer-gray text-lighter-gray py-4 text-sm font-medium mt-6">
+<div class="container">
+<div class="text-center md:text-left">
+<p class="block md:inline mb-4 md:mb-0">&copy; 2024 Stormstrike Inc. All rights reserved.</p>
+<span class="hidden md:inlinetext-gray">|</span>
+<a class="h-[48px] md:h-auto text-white hover:underline inline-block leading-[48px] md:leading-normal px-2 whitespace-nowrap" href="/privacy/">Privacy Policy</a>
+<span class="text-gray">|</span>
+<a class="h-[48px] md:h-auto text-white hover:underline inline-block leading-[48px] md:leading-normal px-2 whitespace-nowrap" href="/terms/">Terms & Conditions</a>
+<span class="text-gray">|</span>
+<a class="h-[48px] md:h-auto text-white hover:underline inline-block leading-[48px] md:leading-normal px-2 whitespace-nowrap" href="/cdn-cgi/l/email-protection#325047415b5c574141725447461c5555">Business Inquiries</a>
+<span class="text-gray">|</span>
+<a class="h-[48px] md:h-auto text-white hover:underline inline-block leading-[48px] md:leading-normal px-2 whitespace-nowrap" target="_blank" href="https://www.fifaindex.com">FIFAINDEX.COM</a>
+<span class="text-gray">|</span>
+<a class="h-[48px] md:h-auto text-white hover:underline inline-block leading-[48px] md:leading-normal px-2 whitespace-nowrap" target="_blank" href="https://www.mut.gg">MUT.GG</a>
+</div>
+</div>
+</footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'8ce118f63d5d32fe',t:'MTcyODE2OTk1Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
