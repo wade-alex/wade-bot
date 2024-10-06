@@ -1,6 +1,5 @@
 import boto3
 import pandas as pd
-import psycopg2
 from botocore.exceptions import ClientError
 import json
 import requests
@@ -50,17 +49,6 @@ s3 = boto3.client(
     aws_secret_access_key=aws_secret_access_key,
     region_name="us-east-2"  # Ensure the region matches your S3 bucket
 )
-
-
-def connect_db():
-    """Establishes and returns a connection to the PostgreSQL database."""
-    conn = psycopg2.connect(
-        dbname="postgres",
-        host="localhost",
-        port="5432"
-    )
-    return conn
-
 
 def download_sbc_links():
     """Downloads the sbc_links.csv file from S3 and returns it as a pandas DataFrame."""
