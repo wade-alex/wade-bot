@@ -59,7 +59,7 @@ nest_asyncio.apply()
 urls = [
     "https://www.fut.gg/sbc/players/",
     "https://www.fut.gg/sbc/upgrades/",
-   "https://www.fut.gg/sbc/challenges/",
+    "https://www.fut.gg/sbc/challenges/",
     "https://www.fut.gg/sbc/foundations/"
 ]
 
